@@ -38,11 +38,30 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    activevalidators (4.0.0)
+      activemodel (>= 3.0)
+      countries (~> 1.2)
+      credit_card_validations (~> 3.2)
+      date_validator
+      mail
+      phony (~> 2.0)
+      rake
     arel (7.1.4)
+    bcrypt (3.1.11)
     builder (3.2.2)
     byebug (9.0.6)
     concurrent-ruby (1.0.2)
+    countries (1.2.5)
+      currencies (~> 0.4.2)
+      i18n_data (~> 0.7.0)
+    credit_card_validations (3.2.2)
+      activemodel (>= 3)
+      activesupport (>= 3)
+    currencies (0.4.2)
     database_cleaner (1.5.3)
+    date_validator (0.9.0)
+      activemodel
+      activesupport
     diff-lcs (1.2.5)
     erubis (2.7.0)
     factory_girl (4.7.0)
@@ -54,6 +73,7 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
+    i18n_data (0.7.0)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -71,6 +91,7 @@ GEM
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
     pg (0.19.0)
+    phony (2.15.33)
     puma (3.6.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
@@ -150,6 +171,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activevalidators (~> 4.0.0)
+  bcrypt
   byebug
   database_cleaner
   factory_girl_rails

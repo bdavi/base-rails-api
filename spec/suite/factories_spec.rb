@@ -1,5 +1,5 @@
 RSpec.describe "Factories" do
-  it "has only valid factories" do
+  it "are all valid" do
     FactoryGirl.lint
   end
 end
