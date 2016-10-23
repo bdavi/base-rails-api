@@ -6,10 +6,6 @@ class ApplicationPolicy
     @record = record
   end
 
-  def index?
-    false
-  end
-
   def show?
     scope.where(:id => record.id).exists?
   end
@@ -39,7 +35,7 @@ class ApplicationPolicy
     end
 
     def resolve
-      scope
+      scope.none
     end
   end
 end
