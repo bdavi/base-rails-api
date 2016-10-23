@@ -7,6 +7,7 @@ gem 'puma', '~> 3.0'
 gem 'pundit'
 gem 'bcrypt'
 gem 'activevalidators', '~> 4.0.0'
+gem 'jsonapi-resources'
 
 group :development, :test do
   gem 'byebug', platform: :mri
