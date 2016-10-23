@@ -21,6 +21,7 @@ end
 group :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'database_cleaner'
+  gem 'pundit-matchers'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
