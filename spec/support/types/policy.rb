@@ -1,6 +1,8 @@
 RSpec.shared_context "policy specs", type: :policy do
   let(:record_class_name) { described_class.name.sub(/Policy\Z/, "") }
 
+  let(:record_class) { record_class_name.safe_constantize }
+
   let(:factory_name) { record_class_name.underscore }
 
   let(:user) { build(:user) }
@@ -8,7 +10,7 @@ RSpec.shared_context "policy specs", type: :policy do
   let(:record) { build(factory_name) }
 
   let(:resolved_scope) do
-    described_class::Scope.new(user, record_class_name.safe_constantize.all).resolve
+    described_class::Scope.new(user, record_class.all).resolve
   end
 
   subject { described_class.new(user, record) }
