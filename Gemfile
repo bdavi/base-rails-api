@@ -9,6 +9,7 @@ gem 'bcrypt'
 gem 'activevalidators', '~> 4.0.0'
 gem 'jsonapi-resources'
 gem 'apitome'
+gem 'doorkeeper'
 
 group :development, :test do
   gem 'byebug', platform: :mri

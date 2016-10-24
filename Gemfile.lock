@@ -67,6 +67,8 @@ GEM
       activemodel
       activesupport
     diff-lcs (1.2.5)
+    doorkeeper (4.1.0)
+      railties (>= 4.2)
     erubis (2.7.0)
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
@@ -193,6 +195,7 @@ DEPENDENCIES
   bcrypt
   byebug
   database_cleaner
+  doorkeeper
   factory_girl_rails
   jsonapi-resources
   listen (~> 3.0.5)
