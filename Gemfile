@@ -8,11 +8,13 @@ gem 'pundit'
 gem 'bcrypt'
 gem 'activevalidators', '~> 4.0.0'
 gem 'jsonapi-resources'
+gem 'apitome'
 
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'
+  gem 'rspec_api_documentation'
 end
 
 group :development do
