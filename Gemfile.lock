@@ -109,6 +109,11 @@ GEM
     pundit-matchers (1.1.0)
       pundit (~> 1.1, >= 1.1.0)
       rspec-rails (>= 3.0.0)
+    pundit-resources (1.1.1)
+      activesupport
+      jsonapi-resources
+      pundit
+      rails (>= 4.2.1, < 5.1)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -203,6 +208,7 @@ DEPENDENCIES
   puma (~> 3.0)
   pundit
   pundit-matchers
+  pundit-resources
   rails (~> 5.0.0, >= 5.0.0.1)
   rspec-rails (~> 3.5)
   rspec_api_documentation

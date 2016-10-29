@@ -10,6 +10,7 @@ gem 'activevalidators', '~> 4.0.0'
 gem 'jsonapi-resources'
 gem 'apitome'
 gem 'doorkeeper'
+gem 'pundit-resources'
 
 group :development, :test do
   gem 'byebug', platform: :mri
