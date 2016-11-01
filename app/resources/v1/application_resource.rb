@@ -1,5 +1,7 @@
 module V1
   class ApplicationResource < JSONAPI::Resource
+    include Pundit::Resource
+
     attributes :created_at, :updated_at
 
     class << self
