@@ -1,0 +1,45 @@
+{
+  "resource": "Authentication",
+  "http_method": "GET",
+  "route": "v1/users/",
+  "description": "returns a 200",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "v1/users/",
+      "request_body": null,
+      "request_headers": {
+        "Authorization": "Bearer 21efa9e3f5e3f9abf2230e0080376e73871541dd8c1aabc74255ae6db093e321",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+        "{\"data\":{}}": null
+      },
+      "request_content_type": null,
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":[{\"id\":\"4\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/4\"},\"attributes\":{\"created-at\":\"2016-11-05T03:15:43.739Z\",\"updated-at\":\"2016-11-05T03:15:43.739Z\",\"email\":\"example4@test.com\"}}],\"links\":{\"first\":\"http://example.org/v1/users?page%5Blimit%5D=10\\u0026page%5Boffset%5D=0\",\"last\":\"http://example.org/v1/users?page%5Blimit%5D=10\\u0026page%5Boffset%5D=0\"}}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Type": "application/vnd.api+json; charset=utf-8",
+        "ETag": "W/\"1901b3d8bbd2869858f2bdacefbe15bd\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "8761c977-181e-4fd8-a44a-b69610a6bcc2",
+        "X-Runtime": "0.011549",
+        "Content-Length": "379"
+      },
+      "response_content_type": "application/vnd.api+json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

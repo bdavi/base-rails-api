@@ -1,0 +1,62 @@
+{
+  "resource": "User",
+  "http_method": "POST",
+  "route": "/v1/users/",
+  "description": "POST create",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "type",
+      "description": " type"
+    },
+    {
+      "scope": "attributes",
+      "required": true,
+      "name": "email",
+      "description": "Attributes email"
+    },
+    {
+      "scope": "attributes",
+      "required": true,
+      "name": "password",
+      "description": "Attributes password"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/v1/users/",
+      "request_body": "{\"data\":{\"type\":\"users\",\"attributes\":{\"email\":\"new@email.com\",\"password\":\"password\"}}}",
+      "request_headers": {
+        "Authorization": "Bearer d6ca9222c39872c132300eea1c5adf54f513ef995064c59c81b598fa2a9d7c38",
+        "Content-Type": "application/vnd.api+json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 201,
+      "response_status_text": "Created",
+      "response_body": "{\"data\":{\"id\":\"12\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/12\"},\"attributes\":{\"created-at\":\"2016-11-05T03:15:43.837Z\",\"updated-at\":\"2016-11-05T03:15:43.837Z\",\"email\":\"new@email.com\"}}}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Type": "application/vnd.api+json; charset=utf-8",
+        "Location": "http://example.org/v1/users/12",
+        "ETag": "W/\"20bccfbe1d0c631ad2933516692c97aa\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "b8343248-c208-42b8-96d1-7b69fb3fa561",
+        "X-Runtime": "0.011004",
+        "Content-Length": "204"
+      },
+      "response_content_type": "application/vnd.api+json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

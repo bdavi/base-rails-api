@@ -1,0 +1,84 @@
+{
+  "resources": [
+    {
+      "name": "Authentication",
+      "examples": [
+        {
+          "description": "returns a 200",
+          "link": "authentication/returns_a_200.json",
+          "groups": "all",
+          "route": "v1/users/",
+          "method": "get"
+        },
+        {
+          "description": "returns a 401",
+          "link": "authentication/returns_a_401.json",
+          "groups": "all",
+          "route": "/oauth/token",
+          "method": "post"
+        },
+        {
+          "description": "returns a 401",
+          "link": "authentication/returns_a_401.json",
+          "groups": "all",
+          "route": "/oauth/token",
+          "method": "post"
+        },
+        {
+          "description": "returns a 401",
+          "link": "authentication/returns_a_401.json",
+          "groups": "all",
+          "route": "v1/users/",
+          "method": "get"
+        },
+        {
+          "description": "returns a bearer token",
+          "link": "authentication/returns_a_bearer_token.json",
+          "groups": "all",
+          "route": "/oauth/token",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "examples": [
+        {
+          "description": "DELETE destroy",
+          "link": "user/delete_destroy.json",
+          "groups": "all",
+          "route": "/v1/users/:persisted_id",
+          "method": "delete"
+        },
+        {
+          "description": "GET index",
+          "link": "user/get_index.json",
+          "groups": "all",
+          "route": "/v1/users/",
+          "method": "get"
+        },
+        {
+          "description": "GET show",
+          "link": "user/get_show.json",
+          "groups": "all",
+          "route": "/v1/users/:persisted_id",
+          "method": "get"
+        },
+        {
+          "description": "PATCH update",
+          "link": "user/patch_update.json",
+          "groups": "all",
+          "route": "/v1/users/:persisted_id",
+          "method": "patch"
+        },
+        {
+          "description": "POST create",
+          "link": "user/post_create.json",
+          "groups": "all",
+          "route": "/v1/users/",
+          "method": "post"
+        }
+      ]
+    }
+  ]
+}

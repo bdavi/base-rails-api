@@ -1,0 +1,66 @@
+{
+  "resource": "User",
+  "http_method": "PATCH",
+  "route": "/v1/users/:persisted_id",
+  "description": "PATCH update",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "type",
+      "description": " type"
+    },
+    {
+      "required": true,
+      "name": "id",
+      "description": " id"
+    },
+    {
+      "scope": "attributes",
+      "required": true,
+      "name": "email",
+      "description": "Attributes email"
+    },
+    {
+      "scope": "attributes",
+      "required": true,
+      "name": "password",
+      "description": "Attributes password"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "PATCH",
+      "request_path": "/v1/users/8",
+      "request_body": "{\"data\":{\"type\":\"users\",\"id\":8,\"attributes\":{\"email\":\"new@email.com\",\"password\":\"password\"}}}",
+      "request_headers": {
+        "Authorization": "Bearer cfdda8595eacf69f680ef36b3b94f069d8ca2852c35e664555c300d3f8b80bfd",
+        "Content-Type": "application/vnd.api+json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":{\"id\":\"8\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/8\"},\"attributes\":{\"created-at\":\"2016-11-05T03:15:43.788Z\",\"updated-at\":\"2016-11-05T03:15:43.800Z\",\"email\":\"new@email.com\"}}}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Type": "application/vnd.api+json; charset=utf-8",
+        "ETag": "W/\"d83d2c747c319c87ea195a9488d9e998\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "2756e7d1-8899-48bd-a52f-047c788f0a02",
+        "X-Runtime": "0.012848",
+        "Content-Length": "202"
+      },
+      "response_content_type": "application/vnd.api+json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

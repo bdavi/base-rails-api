@@ -1,0 +1,45 @@
+{
+  "resource": "Authentication",
+  "http_method": "GET",
+  "route": "v1/users/",
+  "description": "returns a 401",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "v1/users/",
+      "request_body": null,
+      "request_headers": {
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+        "{\"data\":{}}": null
+      },
+      "request_content_type": null,
+      "response_status": 401,
+      "response_status_text": "Unauthorized",
+      "response_body": null,
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "no-store",
+        "Pragma": "no-cache",
+        "WWW-Authenticate": "Bearer realm=\"Doorkeeper\", error=\"invalid_token\", error_description=\"The access token is invalid\"",
+        "Content-Type": "text/html",
+        "X-Request-Id": "2e4c8709-09d5-407c-8a2e-7acaaf2021de",
+        "X-Runtime": "0.005948",
+        "Content-Length": "0"
+      },
+      "response_content_type": "text/html",
+      "curl": null
+    }
+  ]
+}

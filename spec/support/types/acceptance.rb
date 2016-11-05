@@ -10,6 +10,54 @@ RSpec.shared_context "acceptance specs", type: :acceptance do
   let(:policy_class_name) { "#{model_class_name}Policy" }
 
   let(:policy_class) { policy_class_name.safe_constantize }
+
+  let(:factory_name) { model_class_name.underscore }
+
+  class << self
+    def show
+      get "#{ROUTE}:persisted_id", :authenticated, :allowed, :persisted do
+        example_request "GET show" do
+          expect(response_status).to eq 200
+        end
+      end
+    end
+
+    def index
+      get ROUTE, :authenticated, :allowed, :persisted do
+        example_request "GET index" do
+          expect(response_status).to eq 200
+        end
+      end
+    end
+
+    def destroy
+      delete "#{ROUTE}:persisted_id", :authenticated, :allowed, :persisted, :persisted_id do
+        example_request "DELETE destroy" do
+          expect(response_status).to eq 204
+        end
+      end
+    end
+
+    def create &block
+      post ROUTE, :authenticated, :allowed, :with_params do
+        include_context "params"
+        yield
+        example_request "POST create" do
+          expect(response_status).to eq 201
+        end
+      end
+    end
+
+    def update &block
+      patch "#{ROUTE}:persisted_id", :authenticated, :allowed, :with_params, :persisted_id, :persisted do
+        include_context "params"
+        yield
+        example_request "PATCH update" do
+          expect(response_status).to eq 200
+        end
+      end
+    end
+  end
 end
 
 RSpec.shared_context "authenticated", authenticated: true do
@@ -38,4 +86,16 @@ RSpec.shared_context "allowed", allowed: true do
 
     allow(Pundit).to receive(:policy_scope!) {|_, scope| scope.all }
   end
+end
+
+RSpec.shared_context "persisted id", persisted_id: true do
+  parameter "id", required: true
+
+  let("id") { persisted_id }
+end
+
+RSpec.shared_context "persisted", persisted: true do
+  let!(:persisted) { FactoryGirl.create(factory_name.to_sym) }
+
+  let(:persisted_id) { persisted.id }
 end
