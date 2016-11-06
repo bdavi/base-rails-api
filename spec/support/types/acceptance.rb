@@ -14,8 +14,12 @@ RSpec.shared_context "acceptance specs", type: :acceptance do
   let(:factory_name) { model_class_name.underscore }
 
   class << self
+    def path
+      "/v1/#{metadata[:resource_name].pluralize.underscore.dasherize}/"
+    end
+
     def show
-      get "#{ROUTE}:persisted_id", :authenticated, :allowed, :persisted do
+      get "#{path}:persisted_id", :authenticated, :allowed, :persisted do
         example_request "GET show" do
           expect(response_status).to eq 200
         end
@@ -23,7 +27,7 @@ RSpec.shared_context "acceptance specs", type: :acceptance do
     end
 
     def index
-      get ROUTE, :authenticated, :allowed, :persisted do
+      get path, :authenticated, :allowed, :persisted do
         example_request "GET index" do
           expect(response_status).to eq 200
         end
@@ -31,7 +35,7 @@ RSpec.shared_context "acceptance specs", type: :acceptance do
     end
 
     def destroy
-      delete "#{ROUTE}:persisted_id", :authenticated, :allowed, :persisted, :persisted_id do
+      delete "#{path}:persisted_id", :authenticated, :allowed, :persisted, :persisted_id do
         example_request "DELETE destroy" do
           expect(response_status).to eq 204
         end
@@ -39,7 +43,7 @@ RSpec.shared_context "acceptance specs", type: :acceptance do
     end
 
     def create &block
-      post ROUTE, :authenticated, :allowed, :with_params do
+      post path, :authenticated, :allowed, :with_params do
         include_context "params"
         yield
         example_request "POST create" do
@@ -49,7 +53,7 @@ RSpec.shared_context "acceptance specs", type: :acceptance do
     end
 
     def update &block
-      patch "#{ROUTE}:persisted_id", :authenticated, :allowed, :with_params, :persisted_id, :persisted do
+      patch "#{path}:persisted_id", :authenticated, :allowed, :with_params, :persisted_id, :persisted do
         include_context "params"
         yield
         example_request "PATCH update" do
