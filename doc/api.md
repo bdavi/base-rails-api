@@ -1,4 +1,4 @@
-Apitome Documentation
+Base API Documentation
 =====================
 
-This file was automatically generated, and can be found at `doc/api.md`.
+This API uses the JSON API specification for all endpoints. Learn more at [here](http://jsonapi.org/)

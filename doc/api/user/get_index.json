@@ -16,27 +16,16 @@
       "request_path": "/v1/users/",
       "request_body": null,
       "request_headers": {
-        "Authorization": "Bearer 54ed7e07e89650d9a554260a2085d481c73fab54faf0a0ae65c32ee61d203baf",
-        "Host": "example.org",
-        "Cookie": ""
+        "Authorization": "Bearer 27d761434aa82132fe67ac0ac0a22d0273d9d38aeb550d9750710f84363c59ce"
       },
       "request_query_parameters": {
-        "{\"data\":{}}": null
       },
       "request_content_type": null,
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\"data\":[{\"id\":\"13\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/13\"},\"attributes\":{\"created-at\":\"2016-11-05T03:15:43.843Z\",\"updated-at\":\"2016-11-05T03:15:43.843Z\",\"email\":\"example12@test.com\"}},{\"id\":\"14\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/14\"},\"attributes\":{\"created-at\":\"2016-11-05T03:15:43.849Z\",\"updated-at\":\"2016-11-05T03:15:43.849Z\",\"email\":\"example13@test.com\"}}],\"links\":{\"first\":\"http://example.org/v1/users?page%5Blimit%5D=10\\u0026page%5Boffset%5D=0\",\"last\":\"http://example.org/v1/users?page%5Blimit%5D=10\\u0026page%5Boffset%5D=0\"}}",
+      "response_body": "{\"data\":[{\"id\":\"9\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/9\"},\"attributes\":{\"created-at\":\"2016-11-10T04:39:37.256Z\",\"updated-at\":\"2016-11-10T04:39:37.256Z\",\"email\":\"example9@test.com\"}},{\"id\":\"10\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/10\"},\"attributes\":{\"created-at\":\"2016-11-10T04:39:37.261Z\",\"updated-at\":\"2016-11-10T04:39:37.261Z\",\"email\":\"example10@test.com\"}}],\"links\":{\"first\":\"http://example.org/v1/users?page%5Blimit%5D=10\\u0026page%5Boffset%5D=0\",\"last\":\"http://example.org/v1/users?page%5Blimit%5D=10\\u0026page%5Boffset%5D=0\"}}",
       "response_headers": {
-        "X-Frame-Options": "SAMEORIGIN",
-        "X-XSS-Protection": "1; mode=block",
-        "X-Content-Type-Options": "nosniff",
-        "Content-Type": "application/vnd.api+json; charset=utf-8",
-        "ETag": "W/\"dc0077da244c88da9f1b1366603dcd23\"",
-        "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "76ec5b1e-629b-4730-a416-53c37725d2b2",
-        "X-Runtime": "0.008266",
-        "Content-Length": "583"
+        "Content-Type": "application/vnd.api+json; charset=utf-8"
       },
       "response_content_type": "application/vnd.api+json; charset=utf-8",
       "curl": null

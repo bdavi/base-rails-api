@@ -1,4 +1,4 @@
-ruby File.read(".ruby-version").split("-").last.strip
+ruby File.read('.ruby-version').split('-').last.strip
 source 'https://rubygems.org'
 
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
@@ -8,7 +8,7 @@ gem 'pundit'
 gem 'bcrypt'
 gem 'activevalidators', '~> 4.0.0'
 gem 'jsonapi-resources'
-gem 'apitome'
+gem 'apitome', git: 'git@github.com:jejacks0n/apitome.git'
 gem 'doorkeeper'
 gem 'pundit-resources'
 

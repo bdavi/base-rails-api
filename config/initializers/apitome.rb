@@ -13,7 +13,7 @@ Apitome.setup do |config|
   config.doc_path = "doc/api"
 
   # The title of the documentation -- If your project has a name, you'll want to put it here.
-  config.title = "Apitome Documentation"
+  config.title = "Base API Documentation"
 
   # The main layout view for all documentation pages. By default this is pretty basic, but you may want to use your own
   # application layout.
@@ -38,5 +38,5 @@ Apitome.setup do |config|
 
   # Apitome can render the documentation into a single page that uses scrollspy, or it can render the documentation on
   # individual pages on demand. This allows you to specify which one you want, as a single page may impact performance.
-  config.single_page = true
+  config.single_page = false
 end

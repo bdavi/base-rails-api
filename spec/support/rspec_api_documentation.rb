@@ -32,8 +32,8 @@ RspecApiDocumentation.configure do |config|
   # By default, when these settings are nil, all headers are shown,
   # which is sometimes too chatty. Setting the parameters to an
   # array of headers will render *only* those headers.
-  config.request_headers_to_include = nil
-  config.response_headers_to_include = nil
+  config.request_headers_to_include = %w[Content-Type Authorization]
+  config.response_headers_to_include = %w[Content-Type]
 
   # By default examples and resources are ordered by description. Set to true keep
   # the source order.
@@ -56,22 +56,13 @@ RspecApiDocumentation.configure do |config|
     config.filter = :public
   end
 
-  # Change how the post body is formatted by default, you can still override by `raw_post`
-  # Can be :json, :xml, or a proc that will be passed the params
-  config.request_body_formatter = Proc.new { |params| { data: params }.to_json }
+  config.request_body_formatter = Proc.new { |params| { data: params }.to_json if params.any? }
 
   # Change how the response body is formatted by default
   # Is proc that will be called with the response_content_type & response_body
   # by default response_content_type of `application/json` are pretty formated.
   config.response_body_formatter = Proc.new { |response_content_type, response_body| response_body }
 
-  # Change the embedded style for HTML output. This file will not be processed by
-  # RspecApiDocumentation and should be plain CSS.
-  config.html_embedded_css_file = nil
-
-  # Removes the DSL method `status`, this is required if you have a parameter named status
   config.disable_dsl_status!
-
-  # Removes the DSL method `method`, this is required if you have a parameter named method
   config.disable_dsl_method!
 end

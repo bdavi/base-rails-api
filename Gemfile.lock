@@ -1,3 +1,12 @@
+GIT
+  remote: git@github.com:jejacks0n/apitome.git
+  revision: 9c2bf2526d707d337986d05b802cb2ce82fd1dca
+  specs:
+    apitome (0.1.0)
+      kramdown
+      railties
+      rspec_api_documentation
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -46,10 +55,6 @@ GEM
       mail
       phony (~> 2.0)
       rake
-    apitome (0.1.0)
-      kramdown
-      railties
-      rspec_api_documentation
     arel (7.1.4)
     bcrypt (3.1.11)
     builder (3.2.2)
@@ -196,7 +201,7 @@ PLATFORMS
 
 DEPENDENCIES
   activevalidators (~> 4.0.0)
-  apitome
+  apitome!
   bcrypt
   byebug
   database_cleaner

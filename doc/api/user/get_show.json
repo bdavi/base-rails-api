@@ -13,30 +13,19 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/v1/users/10",
+      "request_path": "/v1/users/8",
       "request_body": null,
       "request_headers": {
-        "Authorization": "Bearer 6c0393183cc3d5278c6e5bb6a8ce3c6a0992ce90d8086c2e61a2d40440019bad",
-        "Host": "example.org",
-        "Cookie": ""
+        "Authorization": "Bearer 0049b690fe4b8ae20e99b44d795819c054c087e338d24abbf31577b1d2973ec4"
       },
       "request_query_parameters": {
-        "{\"data\":{}}": null
       },
       "request_content_type": null,
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\"data\":{\"id\":\"10\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/10\"},\"attributes\":{\"created-at\":\"2016-11-05T03:15:43.812Z\",\"updated-at\":\"2016-11-05T03:15:43.812Z\",\"email\":\"example10@test.com\"}}}",
+      "response_body": "{\"data\":{\"id\":\"8\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/8\"},\"attributes\":{\"created-at\":\"2016-11-10T04:39:37.243Z\",\"updated-at\":\"2016-11-10T04:39:37.243Z\",\"email\":\"example8@test.com\"}}}",
       "response_headers": {
-        "X-Frame-Options": "SAMEORIGIN",
-        "X-XSS-Protection": "1; mode=block",
-        "X-Content-Type-Options": "nosniff",
-        "Content-Type": "application/vnd.api+json; charset=utf-8",
-        "ETag": "W/\"2a1d3209e55114c31d3da7d249523186\"",
-        "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "65a76137-0b37-424a-9d40-ee81ea3f1da9",
-        "X-Runtime": "0.007076",
-        "Content-Length": "209"
+        "Content-Type": "application/vnd.api+json; charset=utf-8"
       },
       "response_content_type": "application/vnd.api+json; charset=utf-8",
       "curl": null

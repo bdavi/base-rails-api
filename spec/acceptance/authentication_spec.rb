@@ -17,8 +17,7 @@ RSpec.resource "Authentication", :acceptance do
           }
         end
 
-        example "returns a bearer token" do
-          do_request
+        example_request "Retreive authentication token" do
           expect(response_status).to eq 200
           token = Doorkeeper::AccessToken.find_by_token(parsed_response[:access_token])
           expect(token.resource_owner_id).to eq user.id
@@ -26,7 +25,7 @@ RSpec.resource "Authentication", :acceptance do
       end
     end
 
-    context "with an invalid password" do
+    context "with an invalid password", document: false do
       post "/oauth/token" do
         let :raw_post do
           {
@@ -36,14 +35,13 @@ RSpec.resource "Authentication", :acceptance do
           }
         end
 
-        example "returns a 401" do
-          do_request
+        example_request "returns a 401" do
           expect(response_status).to eq 401
         end
       end
     end
 
-    context "with an invalid username" do
+    context "with an invalid username", document: false do
       post "/oauth/token" do
         let :raw_post do
           {
@@ -53,20 +51,17 @@ RSpec.resource "Authentication", :acceptance do
           }
         end
 
-        example "returns a 401" do
-          do_request
+        example_request "returns a 401" do
           expect(response_status).to eq 401
         end
       end
     end
   end
 
-  describe "accessing a protected resource" do
+  describe "accessing a protected resource", document: false do
     context "when authenticated" do
       get "v1/users/", :authenticated do
-        example "returns a 200" do
-          do_request
-
+        example_request "returns a 200", document: false do
           expect(response_status).to eq 200
         end
       end
@@ -74,9 +69,7 @@ RSpec.resource "Authentication", :acceptance do
 
     context "when not authenticated" do
       get "v1/users/" do
-        example "returns a 401" do
-          do_request
-
+        example_request "returns a 401" do
           expect(response_status).to eq 401
         end
       end
