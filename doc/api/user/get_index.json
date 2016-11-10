@@ -16,14 +16,14 @@
       "request_path": "/v1/users/",
       "request_body": null,
       "request_headers": {
-        "Authorization": "Bearer 27d761434aa82132fe67ac0ac0a22d0273d9d38aeb550d9750710f84363c59ce"
+        "Authorization": "Bearer dc11e036399b6c64c5a15d0690d9a726c25b92eddec154e39825189fdc23c85a"
       },
       "request_query_parameters": {
       },
       "request_content_type": null,
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\"data\":[{\"id\":\"9\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/9\"},\"attributes\":{\"created-at\":\"2016-11-10T04:39:37.256Z\",\"updated-at\":\"2016-11-10T04:39:37.256Z\",\"email\":\"example9@test.com\"}},{\"id\":\"10\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/10\"},\"attributes\":{\"created-at\":\"2016-11-10T04:39:37.261Z\",\"updated-at\":\"2016-11-10T04:39:37.261Z\",\"email\":\"example10@test.com\"}}],\"links\":{\"first\":\"http://example.org/v1/users?page%5Blimit%5D=10\\u0026page%5Boffset%5D=0\",\"last\":\"http://example.org/v1/users?page%5Blimit%5D=10\\u0026page%5Boffset%5D=0\"}}",
+      "response_body": "{\"data\":[{\"id\":\"7\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/7\"},\"attributes\":{\"created-at\":\"2016-11-10T05:04:26.997Z\",\"updated-at\":\"2016-11-10T05:04:26.997Z\",\"email\":\"example6@test.com\"}},{\"id\":\"8\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/8\"},\"attributes\":{\"created-at\":\"2016-11-10T05:04:27.002Z\",\"updated-at\":\"2016-11-10T05:04:27.002Z\",\"email\":\"example7@test.com\"}}],\"links\":{\"first\":\"http://example.org/v1/users?page%5Blimit%5D=10\\u0026page%5Boffset%5D=0\",\"last\":\"http://example.org/v1/users?page%5Blimit%5D=10\\u0026page%5Boffset%5D=0\"}}",
       "response_headers": {
         "Content-Type": "application/vnd.api+json; charset=utf-8"
       },

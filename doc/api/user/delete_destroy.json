@@ -17,10 +17,10 @@
   "requests": [
     {
       "request_method": "DELETE",
-      "request_path": "/v1/users/6",
-      "request_body": "{\"data\":{\"id\":6}}",
+      "request_path": "/v1/users/10",
+      "request_body": "{\"data\":{\"id\":10}}",
       "request_headers": {
-        "Authorization": "Bearer 100584543194fdc9bd2f371d828478be5e99e500d48d8789564b3296222a3afb",
+        "Authorization": "Bearer 606dcffc781cdc771df511661eb499acc6cdb2773d236de92fb7ca64cf0fa869",
         "Content-Type": "application/x-www-form-urlencoded"
       },
       "request_query_parameters": {

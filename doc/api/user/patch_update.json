@@ -34,10 +34,10 @@
   "requests": [
     {
       "request_method": "PATCH",
-      "request_path": "/v1/users/12",
-      "request_body": "{\"data\":{\"type\":\"users\",\"id\":12,\"attributes\":{\"email\":\"new@email.com\",\"password\":\"password\"}}}",
+      "request_path": "/v1/users/2",
+      "request_body": "{\"data\":{\"type\":\"users\",\"id\":2,\"attributes\":{\"email\":\"new@email.com\",\"password\":\"password\"}}}",
       "request_headers": {
-        "Authorization": "Bearer 7ffce721020ab969d4b71514da910e8f14f1a50306e0972b0d3af3bd6755f99d",
+        "Authorization": "Bearer 6e1eeb750fd69b1fdae6fe1de0b9f3a171cb5d40eb08e00da8143b48eaadb544",
         "Content-Type": "application/vnd.api+json"
       },
       "request_query_parameters": {
@@ -45,7 +45,7 @@
       "request_content_type": "application/vnd.api+json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\"data\":{\"id\":\"12\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/12\"},\"attributes\":{\"created-at\":\"2016-11-10T04:39:37.280Z\",\"updated-at\":\"2016-11-10T04:39:37.292Z\",\"email\":\"new@email.com\"}}}",
+      "response_body": "{\"data\":{\"id\":\"2\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/2\"},\"attributes\":{\"created-at\":\"2016-11-10T05:04:26.919Z\",\"updated-at\":\"2016-11-10T05:04:26.947Z\",\"email\":\"new@email.com\"}}}",
       "response_headers": {
         "Content-Type": "application/vnd.api+json; charset=utf-8"
       },

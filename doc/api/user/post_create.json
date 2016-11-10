@@ -32,7 +32,7 @@
       "request_path": "/v1/users/",
       "request_body": "{\"data\":{\"type\":\"users\",\"attributes\":{\"email\":\"new@email.com\",\"password\":\"password\"}}}",
       "request_headers": {
-        "Authorization": "Bearer f157b08472e1f9275e46fb6405e2eb944effbace5f2158d0d19217a54c9287d3",
+        "Authorization": "Bearer 041909b0b5a1e0e373416c2c259c69167610e2772f4aa7d7437b81684905eeb2",
         "Content-Type": "application/vnd.api+json"
       },
       "request_query_parameters": {
@@ -40,7 +40,7 @@
       "request_content_type": "application/vnd.api+json",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "{\"data\":{\"id\":\"14\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/14\"},\"attributes\":{\"created-at\":\"2016-11-10T04:39:37.310Z\",\"updated-at\":\"2016-11-10T04:39:37.310Z\",\"email\":\"new@email.com\"}}}",
+      "response_body": "{\"data\":{\"id\":\"6\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/6\"},\"attributes\":{\"created-at\":\"2016-11-10T05:04:26.990Z\",\"updated-at\":\"2016-11-10T05:04:26.990Z\",\"email\":\"new@email.com\"}}}",
       "response_headers": {
         "Content-Type": "application/vnd.api+json; charset=utf-8"
       },
