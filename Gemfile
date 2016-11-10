@@ -8,7 +8,7 @@ gem 'pundit'
 gem 'bcrypt'
 gem 'activevalidators', '~> 4.0.0'
 gem 'jsonapi-resources'
-gem 'apitome', git: 'git@github.com:jejacks0n/apitome.git'
+gem 'apitome', git: 'https://github.com/jejacks0n/apitome.git'
 gem 'doorkeeper'
 gem 'pundit-resources'
 

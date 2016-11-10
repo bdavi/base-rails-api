@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:jejacks0n/apitome.git
+  remote: https://github.com/jejacks0n/apitome.git
   revision: 9c2bf2526d707d337986d05b802cb2ce82fd1dca
   specs:
     apitome (0.1.0)
