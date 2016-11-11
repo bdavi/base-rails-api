@@ -1,4 +1,6 @@
 require 'factory_girl_rails'
+require "sidekiq/testing"
+require "sidekiq/api"
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

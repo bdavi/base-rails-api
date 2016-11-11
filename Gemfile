@@ -11,6 +11,9 @@ gem 'jsonapi-resources'
 gem 'apitome', git: 'https://github.com/jejacks0n/apitome.git'
 gem 'doorkeeper'
 gem 'pundit-resources'
+gem "sidekiq", ">= 4.1.1"
+gem "sinatra", :require => nil
+gem "redis-namespace", ">= 1.3.2"
 
 group :development, :test do
   gem 'byebug', platform: :mri

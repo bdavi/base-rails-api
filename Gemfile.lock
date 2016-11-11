@@ -60,6 +60,7 @@ GEM
     builder (3.2.2)
     byebug (9.0.6)
     concurrent-ruby (1.0.2)
+    connection_pool (2.2.0)
     countries (1.2.5)
       currencies (~> 0.4.2)
       i18n_data (~> 0.7.0)
@@ -120,6 +121,8 @@ GEM
       pundit
       rails (>= 4.2.1, < 5.1)
     rack (2.0.1)
+    rack-protection (1.5.3)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.0.1)
@@ -149,6 +152,9 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    redis (3.3.1)
+    redis-namespace (1.5.2)
+      redis (~> 3.0, >= 3.0.4)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -176,6 +182,13 @@ GEM
       rspec (~> 3.0, >= 3.0.0)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
+    sidekiq (4.2.2)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (~> 1.5)
+      redis (~> 3.2, >= 3.2.1)
+    sinatra (1.0)
+      rack (>= 1.0)
     spring (2.0.0)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -215,9 +228,12 @@ DEPENDENCIES
   pundit-matchers
   pundit-resources
   rails (~> 5.0.0, >= 5.0.0.1)
+  redis-namespace (>= 1.3.2)
   rspec-rails (~> 3.5)
   rspec_api_documentation
   shoulda-matchers (~> 3.1)
+  sidekiq (>= 4.1.1)
+  sinatra
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
