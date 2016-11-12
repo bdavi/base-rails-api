@@ -1,0 +1,9 @@
+require 'rails_helper'
+
+RSpec.describe <%= class_name %>, type: :model do
+<% attribute_names.each do |attribute| %>
+  it { is_expected.to have_attribute :<%= attribute %> }
+<% end %><% belongs_to_attribute_names.each do |attribute| %>
+  it { is_expected.to belong_to :<%= attribute %> }
+<% end %>
+end

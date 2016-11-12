@@ -14,4 +14,6 @@ RSpec.shared_context "resource specs", type: :resource do
   let(:record) { create(factory_name) }
 
   subject { described_class.new(record, context) }
+
+  let :base_fetchable_fields { %i[id created_at updated_at] }
 end

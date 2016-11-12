@@ -1,0 +1,15 @@
+require 'rails_helper'
+
+RSpec.describe <%= class_name %>Policy, type: :policy do
+  it { is_expected.to forbid_action(:create) }
+  it { is_expected.to forbid_action(:update) }
+  it { is_expected.to forbid_action(:destroy) }
+
+  describe "#scope" do
+    persist_record_and_user
+
+    it "does not include the record" do
+      expect(resolved_scope).to eq be_empty
+    end
+  end
+end

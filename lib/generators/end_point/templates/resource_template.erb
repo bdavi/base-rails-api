@@ -1,0 +1,25 @@
+module V1
+  class <%= class_name %>Resource < ApplicationResource<% non_belongs_to_attribute_names.each do |attribute| %>
+    attribute :<%= attribute %>
+<% end %><% belongs_to_attribute_names.each do |attribute| %>
+    has_one :<%= attribute %>
+<% end %>
+    class << self
+      def creatable_fields context
+        super + %i[<%= attribute_names.join(" ") %>]
+      end
+
+      def updatable_fields context
+        super + %i[<%= attribute_names.join(" ") %>]
+      end
+
+      def sortable_fields context
+        super + %i[]
+      end
+    end
+
+    def fetchable_fields
+      super + %i[<%= attribute_names.join(" ") %>]
+    end
+  end
+end

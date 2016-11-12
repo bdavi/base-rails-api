@@ -1,0 +1,22 @@
+require 'rails_helper'
+require 'rspec_api_documentation/dsl'
+
+RSpec.resource "<%= class_name %>" do
+  shared_context "params" do<% non_belongs_to_attribute_names.each do |attribute| %>
+    parameter "<%= attribute %>", scope: :attributes<% end %><% belongs_to_attribute_names.each do |attribute| %>
+    parameter "<%= attribute %>", scope: :relationships<% end %>
+  end
+
+  show
+  index
+  destroy
+  create do<% non_belongs_to_attribute_names.each do |attribute| %>
+    let("<%= attribute.dasherize %>") { "" }<% end %><% belongs_to_attribute_names.each do |attribute| %>
+    let("<%= attribute.dasherize %>") {
+      id: 1,
+      type: "<%= attribute.underscore.dasherize.pluralize %>"
+    }<% end %>
+  end
+  update do
+  end
+end

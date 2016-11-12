@@ -1,0 +1,7 @@
+Description:
+    Creates a basic API endpoint including model, policy, resource and acceptance spec.
+
+Example:
+    rails generate end_point Thing <attributes>
+
+    This will create:
