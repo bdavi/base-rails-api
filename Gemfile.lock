@@ -121,6 +121,7 @@ GEM
       pundit
       rails (>= 4.2.1, < 5.1)
     rack (2.0.1)
+    rack-cors (0.4.0)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -227,6 +228,7 @@ DEPENDENCIES
   pundit
   pundit-matchers
   pundit-resources
+  rack-cors
   rails (~> 5.0.0, >= 5.0.0.1)
   redis-namespace (>= 1.3.2)
   rspec-rails (~> 3.5)
