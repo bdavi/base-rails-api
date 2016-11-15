@@ -10,11 +10,20 @@ RSpec.resource "User" do
   show
   index
   destroy
+
   create do
     let("email") { "test@example.com" }
     let("password") { "password" }
   end
+
   update do
     let("email") { "new@email.com" }
+  end
+
+  get "/v1/users/me", :authenticated, :allowed, :persisted do
+    example_request "GET current user" do
+      expect(response_status).to eq 200
+      expect(parsed_response[:data][:id]).to eq current_user.id.to_s
+    end
   end
 end

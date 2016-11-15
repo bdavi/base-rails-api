@@ -15,5 +15,5 @@ RSpec.shared_context "resource specs", type: :resource do
 
   subject { described_class.new(record, context) }
 
-  let :base_fetchable_fields { %i[id created_at updated_at] }
+  let(:base_fetchable_fields) { %i[id created_at updated_at] }
 end

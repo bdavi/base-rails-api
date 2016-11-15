@@ -1,8 +1,8 @@
 {
   "resource": "User",
   "http_method": "GET",
-  "route": "/v1/users/:persisted_id",
-  "description": "GET show",
+  "route": "/v1/users/me",
+  "description": "GET current user",
   "explanation": null,
   "parameters": [
 
@@ -13,17 +13,17 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/v1/users/4",
+      "request_path": "/v1/users/me",
       "request_body": null,
       "request_headers": {
-        "Authorization": "Bearer f96c2ab0c8f02c9c8a44b1d4d9fe619272a1e25c83dd6835139075a4a4a66dd9"
+        "Authorization": "Bearer 1d95ba4416f1b9915536a814927a4944f4854c424f190eeec3817f67c30e946e"
       },
       "request_query_parameters": {
       },
       "request_content_type": null,
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\"data\":{\"id\":\"4\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/4\"},\"attributes\":{\"created-at\":\"2016-11-15T04:39:22.371Z\",\"updated-at\":\"2016-11-15T04:39:22.371Z\",\"email\":\"example3@test.com\"}}}",
+      "response_body": "{\"data\":{\"id\":\"11\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/11\"},\"attributes\":{\"created-at\":\"2016-11-15T04:39:22.449Z\",\"updated-at\":\"2016-11-15T04:39:22.449Z\",\"email\":\"example10@test.com\"}}}",
       "response_headers": {
         "Content-Type": "application/vnd.api+json; charset=utf-8"
       },
