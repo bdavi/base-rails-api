@@ -15,6 +15,7 @@ gem "sidekiq", ">= 4.1.1"
 gem "sinatra", :require => nil
 gem "redis-namespace", ">= 1.3.2"
 gem "rack-cors", :require => "rack/cors"
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
