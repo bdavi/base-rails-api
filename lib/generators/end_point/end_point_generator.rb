@@ -12,8 +12,8 @@ class EndPointGenerator < Rails::Generators::NamedBase
   end
 
   def create_resource
-    template "resource_template.erb", "app/resources/#{file_name}_resource.rb"
-    template "resource_spec_template.erb", "spec/resources/#{file_name}_resource_spec.rb"
+    template "resource_template.erb", "app/resources/v1/#{file_name}_resource.rb"
+    template "resource_spec_template.erb", "spec/resources/v1/#{file_name}_resource_spec.rb"
   end
 
   def create_controller
