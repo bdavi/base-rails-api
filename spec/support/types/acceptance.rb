@@ -45,7 +45,7 @@ RSpec.shared_context "acceptance specs", type: :acceptance do
     def create &block
       post path, :authenticated, :allowed, :with_params do
         include_context "params"
-        yield
+        yield if block_given?
         example_request "POST create" do
           expect(response_status).to eq 201
         end
@@ -55,7 +55,7 @@ RSpec.shared_context "acceptance specs", type: :acceptance do
     def update &block
       patch "#{path}:persisted_id", :authenticated, :allowed, :with_params, :persisted_id, :persisted do
         include_context "params"
-        yield
+        yield if block_given?
         example_request "PATCH update" do
           expect(response_status).to eq 200
         end
