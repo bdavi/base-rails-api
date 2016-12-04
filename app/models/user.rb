@@ -7,4 +7,9 @@ class User < ApplicationRecord
     email: { message: "invalid email format" }
 
   validates :name, presence: true
+
+  def access_token
+    expires_in = Doorkeeper.configuration.authorization_code_expires_in
+    Doorkeeper::AccessToken.find_or_create_for(nil, id, nil, expires_in, false)
+  end
 end

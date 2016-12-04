@@ -23,4 +23,13 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_presence_of :name }
 
   it { is_expected.to have_secure_password }
+
+  describe "#access_token" do
+    it "returns an AccessToken for the user" do
+      subject.save
+      token = subject.access_token
+      expect(token).to be_a Doorkeeper::AccessToken
+      expect(token.resource_owner_id).to eq subject.id
+    end
+  end
 end
