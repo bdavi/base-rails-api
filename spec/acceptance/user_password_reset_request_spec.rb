@@ -6,9 +6,9 @@ RSpec.resource "UserPasswordResetRequest" do
     parameter "email", scope: :attributes
   end
 
-  create do
-    let("email") { Faker::Internet.email }
-  end
+  let!("email") { create(:user).email }
+
+  create
 
   post path, :with_params do
     include_context "params"
