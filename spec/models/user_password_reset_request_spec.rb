@@ -32,4 +32,19 @@ RSpec.describe UserPasswordResetRequest, type: :model do
       expect(subject.errors[:email]).to include "email must match user"
     end
   end
+
+  describe "sending email" do
+    it "sends a reset email on create" do
+      expect {
+        subject.save
+      }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
+
+    it "does not send a reset email on update" do
+      subject.save
+      expect {
+        subject.save
+      }.to_not change { ActionMailer::Base.deliveries.count }
+    end
+  end
 end

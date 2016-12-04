@@ -37,5 +37,10 @@ module ApiBase
           :max_age => 0
       end
     end
+
+    config.active_job.queue_adapter = :sidekiq
+
+    # Application level custom configuration
+    config.application_display_name = "BaseApp"
   end
 end
