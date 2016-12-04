@@ -5,6 +5,7 @@ RSpec.resource "User" do
   shared_context "params" do
     parameter "email", scope: :attributes, required: true
     parameter "password", scope: :attributes, required: true
+    parameter "name", scope: :attributes, required: true
   end
 
   show
@@ -14,6 +15,7 @@ RSpec.resource "User" do
   create do
     let("email") { "test@example.com" }
     let("password") { "password" }
+    let("name") { "Jane Doe" }
   end
 
   update do

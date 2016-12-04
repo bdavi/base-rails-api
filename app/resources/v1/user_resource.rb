@@ -1,23 +1,23 @@
 module V1
   class UserResource < ApplicationResource
-    attributes :email, :password
+    attributes :email, :password, :name
 
     class << self
       def creatable_fields context
-        super + %i[email password]
+        super + %i[email password name]
       end
 
       def updatable_fields context
-        super + %i[email password]
+        super + %i[email password name]
       end
 
       def sortable_fields context
-        super + %i[email]
+        super + %i[email name]
       end
     end
 
     def fetchable_fields
-      super + %i[email]
+      super + %i[email name]
     end
   end
 end

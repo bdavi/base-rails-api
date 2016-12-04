@@ -19,5 +19,8 @@ RSpec.describe User, type: :model do
     end
   end
 
+  it { is_expected.to have_attribute :name }
+  it { is_expected.to validate_presence_of :name }
+
   it { is_expected.to have_secure_password }
 end

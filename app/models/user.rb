@@ -5,4 +5,6 @@ class User < ApplicationRecord
     presence: true,
     uniqueness: { case_insensitive: true },
     email: { message: "invalid email format" }
+
+  validates :name, presence: true
 end
