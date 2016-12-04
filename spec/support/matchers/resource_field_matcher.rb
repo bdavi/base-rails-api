@@ -40,7 +40,7 @@ module ResourceSpecHelpers
     end
 
     define_method "have_no_#{kind}_fields" do
-      ResouceFieldMatcher.new(kind, :class, [])
+      ResouceFieldMatcher.new(kind, :class)
     end
   end
 
