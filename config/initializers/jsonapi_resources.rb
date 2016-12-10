@@ -5,7 +5,7 @@ JSONAPI.configure do |config|
 
   config.use_text_errors = true
 
-  config.raise_if_parameters_not_allowed = true
+  config.raise_if_parameters_not_allowed = false
 
   config.exception_class_whitelist = [Pundit::NotAuthorizedError]
 end
