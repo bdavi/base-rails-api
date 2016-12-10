@@ -8,7 +8,7 @@ module V1
       end
 
       def updatable_fields context
-        super + %i[email password name]
+        super + %i[email name]
       end
 
       def sortable_fields context
