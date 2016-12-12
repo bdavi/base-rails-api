@@ -1,4 +1,7 @@
 module JRCreatableServiceObject
+  extend ActiveSupport::Concern
+  include ActiveModel::Model
+
   def id
     DateTime.now.utc
   end

@@ -1,10 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe JRCreatableServiceObject do
-  subject do
+  let :fake_class do
     Class.new do
       include JRCreatableServiceObject
     end
+  end
+
+  subject do
+    fake_class.new
   end
 
   let(:timestamp) { DateTime.new(2016, 5, 4, 3, 2, 1) }
@@ -14,33 +18,37 @@ RSpec.describe JRCreatableServiceObject do
     allow(DateTime).to receive(:now).and_return(now)
   end
 
+  it { is_expected.to be_kind_of(ActiveSupport::Concern) }
+
+  it { is_expected.to be_kind_of(ActiveModel::Model) }
+
   describe "#id" do
     it "returns the current timestamp" do
-      expect(subject.new.id).to eq timestamp
+      expect(subject.id).to eq timestamp
     end
   end
 
   describe "#created_at" do
     it "returns the current timestamp" do
-      expect(subject.new.created_at).to eq timestamp
+      expect(subject.created_at).to eq timestamp
     end
   end
 
   describe "#updated_at" do
     it "returns the current timestamp" do
-      expect(subject.new.updated_at).to eq timestamp
+      expect(subject.updated_at).to eq timestamp
     end
   end
 
   describe "#new_record?" do
     it "returns true" do
-      expect(subject.new.new_record?).to be true
+      expect(subject.new_record?).to be true
     end
   end
 
   describe "#save!" do
     it "returns true" do
-      expect(subject.new.save!).to be true
+      expect(subject.save!).to be true
     end
   end
 end
