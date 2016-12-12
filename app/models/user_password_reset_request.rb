@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: user_password_reset_requests
+#
+#  id         :integer          not null, primary key
+#  email      :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class UserPasswordResetRequest < ApplicationRecord
   validates :email,
     presence: true,
