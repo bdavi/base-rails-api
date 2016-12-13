@@ -14,7 +14,14 @@ module JRCreatableServiceObject
     true
   end
 
-  def save!
+  # This method performs the service, should return true when successful.
+  # Override in classes including this module.
+  # Raise an exception on failure, i.e. `raise JSONAPI::Exceptions::InternalServerError`
+  def perform
     true
   end
+
+  # JR will call save! on the object during POST/create.
+  # We want the object to perform its service at that time.
+  alias_method :save!, :perform
 end

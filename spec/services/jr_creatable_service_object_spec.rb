@@ -18,8 +18,6 @@ RSpec.describe JRCreatableServiceObject do
     allow(DateTime).to receive(:now).and_return(now)
   end
 
-  it { is_expected.to be_kind_of(ActiveSupport::Concern) }
-
   it { is_expected.to be_kind_of(ActiveModel::Model) }
 
   describe "#id" do
@@ -46,9 +44,15 @@ RSpec.describe JRCreatableServiceObject do
     end
   end
 
-  describe "#save!" do
+  describe "#new_record?" do
     it "returns true" do
-      expect(subject.save!).to be true
+      expect(subject.perform).to be true
+    end
+  end
+
+  describe "#save!" do
+    it "aliases perform" do
+      expect(subject.method(:save!)).to eq subject.method(:perform)
     end
   end
 end
