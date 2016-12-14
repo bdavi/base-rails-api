@@ -44,15 +44,37 @@ RSpec.describe JRCreatableServiceObject do
     end
   end
 
-  describe "#new_record?" do
+  describe "#save!" do
+    it "returns true" do
+      expect(subject.save!).to be true
+    end
+  end
+
+  describe "#perform" do
     it "returns true" do
       expect(subject.perform).to be true
     end
   end
 
-  describe "#save!" do
-    it "aliases perform" do
-      expect(subject.method(:save!)).to eq subject.method(:perform)
+  describe "#can_perform?" do
+    it "returns true" do
+      expect(subject.can_perform?).to be true
+    end
+  end
+
+  describe "#valid?" do
+    context "when can_perform? is false" do
+      it "returns false" do
+        allow(subject).to receive(:can_perform?).and_return(false)
+        expect(subject.valid?({})).to be false
+      end
+    end
+
+    context "when #perform raises an error" do
+      it "returns false" do
+        allow(subject).to receive(:perform).and_raise(ArgumentError)
+        expect(subject.valid?({})).to be false
+      end
     end
   end
 end

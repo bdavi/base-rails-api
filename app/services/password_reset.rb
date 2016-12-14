@@ -4,8 +4,7 @@ class PasswordReset
   attr_accessor :new_password, :old_password, :user_id
 
   def perform
-    raise JSONAPI::Exceptions::InternalServerError, "Invalid Password Reset" unless can_perform?
-    reset_user_password
+    user.update password: new_password
   end
 
   def can_perform?
@@ -19,9 +18,5 @@ class PasswordReset
   def user
     return unless user_id
     User.find(user_id)
-  end
-
-  def reset_user_password
-    user.update password: new_password
   end
 end

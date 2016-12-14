@@ -27,12 +27,7 @@ RSpec.describe PasswordReset do
   end
 
   describe "#perform" do
-    it "raises JSONAPI::Exceptions::InternalServerError unless #can_perform?" do
-      allow(subject).to receive(:can_perform?).and_return(false)
-      expect{ subject.perform }.to raise_error(JSONAPI::Exceptions::InternalServerError)
-    end
-
-    it "changes the password when #can_perform?" do
+    it "changes the password" do
       subject.user.save
       subject.perform
       expect(subject.user.authenticate(subject.new_password)).to be_truthy
