@@ -13,6 +13,7 @@ RSpec.resource "PasswordReset" do
     let("new-password") { "NEW_pass" }
     let!(:current_user) { create(:user) }
     let("user-id") { current_user.id }
+
     before do
       current_user.reload
     end

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
   namespace :v1 do
-    jsonapi_resources :password_resets
+    jsonapi_resources :password_resets, only: :create
     jsonapi_resources :user_password_reset_requests
     jsonapi_resources :users
   end

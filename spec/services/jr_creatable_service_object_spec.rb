@@ -7,11 +7,9 @@ RSpec.describe JRCreatableServiceObject do
     end
   end
 
-  subject do
-    fake_class.new
-  end
-
   let(:timestamp) { DateTime.new(2016, 5, 4, 3, 2, 1) }
+
+  subject { fake_class.new }
 
   before do
     now = double(utc: timestamp)
@@ -44,37 +42,17 @@ RSpec.describe JRCreatableServiceObject do
     end
   end
 
-  describe "#save!" do
-    it "returns true" do
-      expect(subject.save!).to be true
+  describe "#save" do
+    it "calls #perform" do
+      value = Object.new
+      expect(subject).to receive(:perform).and_return(value)
+      expect(subject.save({})).to be value
     end
   end
 
   describe "#perform" do
     it "returns true" do
       expect(subject.perform).to be true
-    end
-  end
-
-  describe "#can_perform?" do
-    it "returns true" do
-      expect(subject.can_perform?).to be true
-    end
-  end
-
-  describe "#valid?" do
-    context "when can_perform? is false" do
-      it "returns false" do
-        allow(subject).to receive(:can_perform?).and_return(false)
-        expect(subject.valid?({})).to be false
-      end
-    end
-
-    context "when #perform raises an error" do
-      it "returns false" do
-        allow(subject).to receive(:perform).and_raise(ArgumentError)
-        expect(subject.valid?({})).to be false
-      end
     end
   end
 end

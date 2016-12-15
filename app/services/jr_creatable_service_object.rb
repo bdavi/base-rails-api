@@ -1,6 +1,10 @@
 module JRCreatableServiceObject
   extend ActiveSupport::Concern
-  include ActiveModel::Model
+  extend ActiveModel::Callbacks
+
+  included do
+    include ActiveModel::Model
+  end
 
   def id
     DateTime.now.utc
@@ -14,31 +18,15 @@ module JRCreatableServiceObject
     true
   end
 
-  def save!
-    true
-  end
-
-  # This method is called by JR and and is where we will perform the service
-  def valid? context
-    return false unless can_perform?
-
-    begin
-      perform
-    rescue
-      false
-    end
-  end
-
-  # Override to actually execute service. Return true on success.
-  # On failure, return false or raise error.
+  # Override to actually execute/process service.
   def perform
     true
   end
 
-  # Override to prevent service from executing. Return false
-  # to prevent SO from executing. Use to validate conditions
-  # are correct to perform service.
-  def can_perform?
-    true
+  # This method is called by JR and and is where we will perform is invoked
+  def save options=nil
+    perform
   end
+
+  alias_method :save!, :save
 end
