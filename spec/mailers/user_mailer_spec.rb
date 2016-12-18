@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe UserMailer, type: :mailer do
   before do
     allow(ENV).to receive(:[]).with("WEB_UI_URL").and_return("http://www.somedomain.com")
-    token = double(token: "the-token-here")
+    token = double(token: "theTokenHere")
     allow(user).to receive(:access_token).and_return(token)
     allow(Rails.configuration).to receive(:application_display_name).and_return("Some App Name")
   end
@@ -27,7 +27,7 @@ RSpec.describe UserMailer, type: :mailer do
     it "has the expected body" do
       expected_pieces = [
         "Hello Jane Doe,",
-        '\<a href=\"http://www.somedomain.com/reset_password\?authToken=the-token-here\"\>',
+        /www.somedomain.com\/user-profile\/reset-password\?authToken=theTokenHere/,
         "The Some App Name Team"
       ]
 
