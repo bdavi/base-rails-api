@@ -8,6 +8,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  name            :string           not null
+#  kind            :integer          default("standard"), not null
 #
 # Indexes
 #
@@ -15,6 +16,10 @@
 #
 
 class User < ApplicationRecord
+  has_many :memberships
+
+  has_many :organizations, through: :memberships
+
   has_secure_password
 
   validates :email,
@@ -23,6 +28,8 @@ class User < ApplicationRecord
     email: { message: "invalid email format" }
 
   validates :name, presence: true
+
+  enum kind: [:application_admin, :standard]
 
   def access_token
     expires_in = Doorkeeper.configuration.authorization_code_expires_in
