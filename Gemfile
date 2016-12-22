@@ -17,6 +17,7 @@ gem "redis-namespace", ">= 1.3.2"
 gem "rack-cors", :require => "rack/cors"
 gem 'dotenv-rails'
 gem 'annotate'
+gem 'phony_rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
