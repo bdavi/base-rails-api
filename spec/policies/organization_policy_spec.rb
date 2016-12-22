@@ -27,8 +27,8 @@ RSpec.describe OrganizationPolicy, type: :policy do
   describe "#scope" do
     persist_record_and_user
 
-    let(:member_of) { record.tap { record.update users: [user] }}
-    let(:unrelated) { create(:organization) }
+    let!(:member_of) { record.tap { record.update users: [user] }}
+    let!(:unrelated) { create(:organization) }
 
     context "when non-admin" do
       it "includes the organizations the user is a member of" do
@@ -40,7 +40,7 @@ RSpec.describe OrganizationPolicy, type: :policy do
       before { user.update kind:  "application_admin" }
 
       it "includes all organizations" do
-        expect(resolved_scope).to eq Organization.all
+        expect(resolved_scope.to_set).to eq Organization.all.to_set
       end
     end
   end
