@@ -37,5 +37,9 @@ class ApplicationPolicy
     def resolve
       scope.none
     end
+
+    def scope_for klass
+      Pundit.policy_scope!(user, klass)
+    end
   end
 end
