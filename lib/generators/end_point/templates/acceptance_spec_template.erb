@@ -12,10 +12,14 @@ RSpec.resource "<%= class_name %>" do
   destroy
   create do<% non_belongs_to_attribute_names.each do |attribute| %>
     let("<%= attribute.dasherize %>") { "" }<% end %><% belongs_to_attribute_names.each do |attribute| %>
-    let("<%= attribute.dasherize %>") {
-      id: 1,
-      type: "<%= attribute.underscore.dasherize.pluralize %>"
-    }<% end %>
+    let("<%= attribute.dasherize %>") do
+      data: {
+        {
+          id: create(:<%= attribute.underscore %>).id,
+          type: "<%= attribute.underscore.dasherize.pluralize %>"
+        }
+      }
+    end<% end %>
   end
   update do
   end
