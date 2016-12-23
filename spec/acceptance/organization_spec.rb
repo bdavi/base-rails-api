@@ -21,6 +21,6 @@ RSpec.resource "Organization" do
     let("email") { Faker::Internet.email }
   end
   update do
-    let("url") { Faker::Internet.url }
+    let("address") { Faker::Address.street_address  }
   end
 end
