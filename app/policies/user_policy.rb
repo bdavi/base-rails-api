@@ -19,10 +19,16 @@ class UserPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      return scope.all if user.application_admin?
+      return scope.all if user.application_admin? # handle users with no memberships
+
+      conditions = [
+        "users.id = ?",
+        "memberships.organization_id IN (#{scope_for(Organization).select(:id).to_sql})"
+      ]
+
       scope
-        .joins(:memberships)
-        .where(memberships: { organization_id: scope_for(Organization).select(:id) })
+        .left_outer_joins(:memberships)
+        .where(conditions.join(" OR "), user.id)
     end
   end
 

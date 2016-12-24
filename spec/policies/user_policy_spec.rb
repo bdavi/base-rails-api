@@ -52,6 +52,14 @@ RSpec.describe UserPolicy, type: :policy do
     it { is_expected.to permit_action(:create) }
     it { is_expected.to forbid_action(:update) }
     it { is_expected.to forbid_action(:destroy) }
+
+    context "scope" do
+      it "includes the current user in scope" do
+        user.save
+        expect(user.memberships).to be_empty
+        expect(resolved_scope).to include user
+      end
+    end
   end
 
   describe "#scope" do
