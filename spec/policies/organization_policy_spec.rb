@@ -11,7 +11,7 @@ RSpec.describe OrganizationPolicy, type: :policy do
   end
 
   context "when user is member of organization" do
-    before { user.organizations << record }
+    before { record.users << user }
 
     it { is_expected.to permit_action(:create) }
     it { is_expected.to permit_action(:update) }

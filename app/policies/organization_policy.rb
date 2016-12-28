@@ -4,7 +4,7 @@ class OrganizationPolicy < ApplicationPolicy
   end
 
   def update?
-    user&.application_admin? || user&.organizations&.include?(record)
+    user&.application_admin? || record.users.include?(user)
   end
 
   alias destroy? update?
