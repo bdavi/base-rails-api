@@ -17,5 +17,4 @@ module HasUrl
       before_validation "normalize_#{attribute}_as_url".to_sym
     end
   end
-
 end

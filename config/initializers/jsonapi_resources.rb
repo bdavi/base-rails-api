@@ -8,4 +8,7 @@ JSONAPI.configure do |config|
   config.raise_if_parameters_not_allowed = false
 
   config.exception_class_whitelist = [Pundit::NotAuthorizedError]
+
+  config.top_level_meta_include_record_count = true
+  config.top_level_meta_record_count_key = :record_count
 end
