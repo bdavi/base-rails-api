@@ -20,6 +20,10 @@ module V1
       end
 
       alias updatable_fields creatable_fields
+
+      def sortable_fields context
+        super + %i[name]
+      end
     end
 
     def fetchable_fields
