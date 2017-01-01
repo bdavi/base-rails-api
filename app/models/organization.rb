@@ -14,6 +14,9 @@
 
 class Organization < ApplicationRecord
   include HasUrl
+  include TextSearchable
+
+  search_by_columns :name, :address, :phone, :url, :email
 
   has_many :memberships
 

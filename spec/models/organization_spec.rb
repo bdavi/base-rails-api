@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
+  include_examples "TextSearchable", [:name, :address, :phone, :url, :email]
 
   it { is_expected.to have_attribute :name }
 
