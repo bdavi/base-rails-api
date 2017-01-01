@@ -34,6 +34,19 @@ RSpec.shared_context "acceptance specs", type: :acceptance do
       end
     end
 
+    def filtered_index filter, filter_value, &block
+      get path, :authenticated, :allowed do
+        yield if block_given?
+
+        example "GET index(filter: #{filter})" do
+          do_request({ filter: { filter => filter_value}})
+          expect(response_status).to eq 200
+          expect(parsed_response[:data].size).to eq 1
+          expect(parsed_response[:data].first[:id]).to eq matching_record.id.to_s
+        end
+      end
+    end
+
     def destroy
       delete "#{path}:persisted_id", :authenticated, :allowed, :persisted, :persisted_id do
         example_request "DELETE destroy" do

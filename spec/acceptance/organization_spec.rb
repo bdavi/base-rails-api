@@ -23,4 +23,8 @@ RSpec.resource "Organization" do
   update do
     let("address") { Faker::Address.street_address  }
   end
+  filtered_index :search_by, "iS tHe"  do
+    let!(:matching_record) { create(:organization, name: "This is the name") }
+    let!(:not_matching_record) { create(:organization) }
+  end
 end
