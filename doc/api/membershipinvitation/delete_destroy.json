@@ -1,7 +1,7 @@
 {
-  "resource": "User",
+  "resource": "MembershipInvitation",
   "http_method": "DELETE",
-  "route": "/v1/users/:persisted_id",
+  "route": "/v1/membership-invitations/:persisted_id",
   "description": "DELETE destroy",
   "explanation": null,
   "parameters": [
@@ -17,10 +17,10 @@
   "requests": [
     {
       "request_method": "DELETE",
-      "request_path": "/v1/users/17",
-      "request_body": "{\"data\":{\"id\":17}}",
+      "request_path": "/v1/membership-invitations/3",
+      "request_body": "{\"data\":{\"id\":3}}",
       "request_headers": {
-        "Authorization": "Bearer 2e89e3ffe053797df19bc9ade84774380ee55708e29d95c548ab3c180198f142",
+        "Authorization": "Bearer 1eff0591abac9095cf7bd9a1b8752b667db8b1b7884e1c5d4345939a9f7182fd",
         "Content-Type": "application/x-www-form-urlencoded"
       },
       "request_query_parameters": {

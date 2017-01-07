@@ -13,6 +13,138 @@
       ]
     },
     {
+      "name": "Membership",
+      "examples": [
+        {
+          "description": "DELETE destroy",
+          "link": "membership/delete_destroy.json",
+          "groups": "all",
+          "route": "/v1/memberships/:persisted_id",
+          "method": "delete"
+        },
+        {
+          "description": "GET index",
+          "link": "membership/get_index.json",
+          "groups": "all",
+          "route": "/v1/memberships/",
+          "method": "get"
+        },
+        {
+          "description": "GET show",
+          "link": "membership/get_show.json",
+          "groups": "all",
+          "route": "/v1/memberships/:persisted_id",
+          "method": "get"
+        },
+        {
+          "description": "POST create",
+          "link": "membership/post_create.json",
+          "groups": "all",
+          "route": "/v1/memberships/",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "name": "MembershipInvitation",
+      "examples": [
+        {
+          "description": "DELETE destroy",
+          "link": "membershipinvitation/delete_destroy.json",
+          "groups": "all",
+          "route": "/v1/membership-invitations/:persisted_id",
+          "method": "delete"
+        },
+        {
+          "description": "GET index",
+          "link": "membershipinvitation/get_index.json",
+          "groups": "all",
+          "route": "/v1/membership-invitations/",
+          "method": "get"
+        },
+        {
+          "description": "GET show",
+          "link": "membershipinvitation/get_show.json",
+          "groups": "all",
+          "route": "/v1/membership-invitations/:persisted_id",
+          "method": "get"
+        },
+        {
+          "description": "PATCH update",
+          "link": "membershipinvitation/patch_update.json",
+          "groups": "all",
+          "route": "/v1/membership-invitations/:persisted_id",
+          "method": "patch"
+        },
+        {
+          "description": "POST create",
+          "link": "membershipinvitation/post_create.json",
+          "groups": "all",
+          "route": "/v1/membership-invitations/",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "name": "Organization",
+      "examples": [
+        {
+          "description": "DELETE destroy",
+          "link": "organization/delete_destroy.json",
+          "groups": "all",
+          "route": "/v1/organizations/:persisted_id",
+          "method": "delete"
+        },
+        {
+          "description": "GET index",
+          "link": "organization/get_index.json",
+          "groups": "all",
+          "route": "/v1/organizations/",
+          "method": "get"
+        },
+        {
+          "description": "GET index(filter: search_by)",
+          "link": "organization/get_index(filter:_search_by).json",
+          "groups": "all",
+          "route": "/v1/organizations/",
+          "method": "get"
+        },
+        {
+          "description": "GET show",
+          "link": "organization/get_show.json",
+          "groups": "all",
+          "route": "/v1/organizations/:persisted_id",
+          "method": "get"
+        },
+        {
+          "description": "PATCH update",
+          "link": "organization/patch_update.json",
+          "groups": "all",
+          "route": "/v1/organizations/:persisted_id",
+          "method": "patch"
+        },
+        {
+          "description": "POST create",
+          "link": "organization/post_create.json",
+          "groups": "all",
+          "route": "/v1/organizations/",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "name": "PasswordReset",
+      "examples": [
+        {
+          "description": "POST create",
+          "link": "passwordreset/post_create.json",
+          "groups": "all",
+          "route": "/v1/password-resets/",
+          "method": "post"
+        }
+      ]
+    },
+    {
       "name": "User",
       "examples": [
         {
@@ -55,6 +187,25 @@
           "link": "user/post_create.json",
           "groups": "all",
           "route": "/v1/users/",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "name": "UserPasswordResetRequest",
+      "examples": [
+        {
+          "description": "POST create",
+          "link": "userpasswordresetrequest/post_create.json",
+          "groups": "all",
+          "route": "/v1/user-password-reset-requests/",
+          "method": "post"
+        },
+        {
+          "description": "POST create, unauthenticated",
+          "link": "userpasswordresetrequest/post_create,_unauthenticated.json",
+          "groups": "all",
+          "route": "/v1/user-password-reset-requests/",
           "method": "post"
         }
       ]

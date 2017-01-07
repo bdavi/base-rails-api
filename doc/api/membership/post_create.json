@@ -1,0 +1,49 @@
+{
+  "resource": "Membership",
+  "http_method": "POST",
+  "route": "/v1/memberships/",
+  "description": "POST create",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "type",
+      "description": " type"
+    },
+    {
+      "scope": "relationships",
+      "name": "user",
+      "description": "Relationships user"
+    },
+    {
+      "scope": "relationships",
+      "name": "organization",
+      "description": "Relationships organization"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/v1/memberships/",
+      "request_body": "{\"data\":{\"type\":\"memberships\",\"relationships\":{\"user\":{\"data\":{\"id\":\"14\",\"type\":\"users\"}},\"organization\":{\"data\":{\"id\":\"7\",\"type\":\"organizations\"}}}}}",
+      "request_headers": {
+        "Authorization": "Bearer 92878fc068e65ed810870d3cfa5649516ef5c1570171288bec92a313a8fb0135",
+        "Content-Type": "application/vnd.api+json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 201,
+      "response_status_text": "Created",
+      "response_body": "{\"data\":{\"id\":\"4\",\"type\":\"memberships\",\"links\":{\"self\":\"http://example.org/v1/memberships/4\"},\"attributes\":{\"created-at\":\"2017-01-07T21:43:46.875Z\",\"updated-at\":\"2017-01-07T21:43:46.875Z\"},\"relationships\":{\"user\":{\"links\":{\"self\":\"http://example.org/v1/memberships/4/relationships/user\",\"related\":\"http://example.org/v1/memberships/4/user\"}},\"organization\":{\"links\":{\"self\":\"http://example.org/v1/memberships/4/relationships/organization\",\"related\":\"http://example.org/v1/memberships/4/organization\"}}}}}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json; charset=utf-8"
+      },
+      "response_content_type": "application/vnd.api+json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

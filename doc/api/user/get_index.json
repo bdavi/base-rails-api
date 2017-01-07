@@ -16,14 +16,14 @@
       "request_path": "/v1/users/",
       "request_body": null,
       "request_headers": {
-        "Authorization": "Bearer 7b0802f162240d362b680aec3c8aee8c221d226b187dffe5f760f3ed8a1c6f99"
+        "Authorization": "Bearer e74d1295f5a6b28fb431de47eca77609b000a658aa2591a3fd001b3c9d2eff1d"
       },
       "request_query_parameters": {
       },
       "request_content_type": null,
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\"data\":[{\"id\":\"7\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/7\"},\"attributes\":{\"created-at\":\"2016-11-15T04:39:22.405Z\",\"updated-at\":\"2016-11-15T04:39:22.405Z\",\"email\":\"example6@test.com\"}},{\"id\":\"8\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/8\"},\"attributes\":{\"created-at\":\"2016-11-15T04:39:22.411Z\",\"updated-at\":\"2016-11-15T04:39:22.411Z\",\"email\":\"example7@test.com\"}}],\"links\":{\"first\":\"http://example.org/v1/users?page%5Blimit%5D=10\\u0026page%5Boffset%5D=0\",\"last\":\"http://example.org/v1/users?page%5Blimit%5D=10\\u0026page%5Boffset%5D=0\"}}",
+      "response_body": "{\"data\":[{\"id\":\"20\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/20\"},\"attributes\":{\"created-at\":\"2017-01-07T21:43:46.947Z\",\"updated-at\":\"2017-01-07T21:43:46.947Z\",\"email\":\"example20@test.com\",\"name\":\"Teresa Cummerata DDS\"},\"relationships\":{\"organizations\":{\"links\":{\"self\":\"http://example.org/v1/users/20/relationships/organizations\",\"related\":\"http://example.org/v1/users/20/organizations\"}},\"memberships\":{\"links\":{\"self\":\"http://example.org/v1/users/20/relationships/memberships\",\"related\":\"http://example.org/v1/users/20/memberships\"}}}},{\"id\":\"21\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/21\"},\"attributes\":{\"created-at\":\"2017-01-07T21:43:46.958Z\",\"updated-at\":\"2017-01-07T21:43:46.958Z\",\"email\":\"example21@test.com\",\"name\":\"Teresa Cummerata DDS\"},\"relationships\":{\"organizations\":{\"links\":{\"self\":\"http://example.org/v1/users/21/relationships/organizations\",\"related\":\"http://example.org/v1/users/21/organizations\"}},\"memberships\":{\"links\":{\"self\":\"http://example.org/v1/users/21/relationships/memberships\",\"related\":\"http://example.org/v1/users/21/memberships\"}}}}],\"meta\":{\"record-count\":2},\"links\":{\"first\":\"http://example.org/v1/users?page%5Blimit%5D=10\\u0026page%5Boffset%5D=0\",\"last\":\"http://example.org/v1/users?page%5Blimit%5D=10\\u0026page%5Boffset%5D=0\"}}",
       "response_headers": {
         "Content-Type": "application/vnd.api+json; charset=utf-8"
       },

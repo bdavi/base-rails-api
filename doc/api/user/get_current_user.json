@@ -16,14 +16,14 @@
       "request_path": "/v1/users/me",
       "request_body": null,
       "request_headers": {
-        "Authorization": "Bearer 1d95ba4416f1b9915536a814927a4944f4854c424f190eeec3817f67c30e946e"
+        "Authorization": "Bearer 6beb71749a9e2fb1a5cdefb211e2ee596a5e71d22da54a72fe8c32f2a2d9b8a7"
       },
       "request_query_parameters": {
       },
       "request_content_type": null,
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\"data\":{\"id\":\"11\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/11\"},\"attributes\":{\"created-at\":\"2016-11-15T04:39:22.449Z\",\"updated-at\":\"2016-11-15T04:39:22.449Z\",\"email\":\"example10@test.com\"}}}",
+      "response_body": "{\"data\":{\"id\":\"26\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/26\"},\"attributes\":{\"created-at\":\"2017-01-07T21:43:47.098Z\",\"updated-at\":\"2017-01-07T21:43:47.098Z\",\"email\":\"example25@test.com\",\"name\":\"Teresa Cummerata DDS\"},\"relationships\":{\"organizations\":{\"links\":{\"self\":\"http://example.org/v1/users/26/relationships/organizations\",\"related\":\"http://example.org/v1/users/26/organizations\"}},\"memberships\":{\"links\":{\"self\":\"http://example.org/v1/users/26/relationships/memberships\",\"related\":\"http://example.org/v1/users/26/memberships\"}}}}}",
       "response_headers": {
         "Content-Type": "application/vnd.api+json; charset=utf-8"
       },

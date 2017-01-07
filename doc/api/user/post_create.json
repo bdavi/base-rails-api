@@ -21,6 +21,22 @@
       "required": true,
       "name": "password",
       "description": "Attributes password"
+    },
+    {
+      "scope": "attributes",
+      "required": true,
+      "name": "name",
+      "description": "Attributes name"
+    },
+    {
+      "scope": "relationships",
+      "name": "memberships",
+      "description": "Relationships memberships"
+    },
+    {
+      "scope": "relationships",
+      "name": "organizations",
+      "description": "Relationships organizations"
     }
   ],
   "response_fields": [
@@ -30,9 +46,9 @@
     {
       "request_method": "POST",
       "request_path": "/v1/users/",
-      "request_body": "{\"data\":{\"type\":\"users\",\"attributes\":{\"email\":\"new@email.com\",\"password\":\"password\"}}}",
+      "request_body": "{\"data\":{\"type\":\"users\",\"attributes\":{\"email\":\"new@email.com\",\"password\":\"password\",\"name\":\"Jane Doe\"},\"relationships\":{\"memberships\":{\"data\":[{\"id\":\"10\",\"type\":\"memberships\"}]},\"organizations\":{\"data\":[{\"id\":\"16\",\"type\":\"organizations\"}]}}}}",
       "request_headers": {
-        "Authorization": "Bearer 4e73b071748a6144184dedddd582f39c7bc07aa3485a55bcf532be66c0d7a105",
+        "Authorization": "Bearer 4748de383458b0297105136f564b70544ccf774a3dfc619d2e2f0ed0a67e40e5",
         "Content-Type": "application/vnd.api+json"
       },
       "request_query_parameters": {
@@ -40,7 +56,7 @@
       "request_content_type": "application/vnd.api+json",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "{\"data\":{\"id\":\"2\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/2\"},\"attributes\":{\"created-at\":\"2016-11-15T04:39:22.355Z\",\"updated-at\":\"2016-11-15T04:39:22.355Z\",\"email\":\"new@email.com\"}}}",
+      "response_body": "{\"data\":{\"id\":\"25\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/25\"},\"attributes\":{\"created-at\":\"2017-01-07T21:43:47.080Z\",\"updated-at\":\"2017-01-07T21:43:47.080Z\",\"email\":\"new@email.com\",\"name\":\"Jane Doe\"},\"relationships\":{\"organizations\":{\"links\":{\"self\":\"http://example.org/v1/users/25/relationships/organizations\",\"related\":\"http://example.org/v1/users/25/organizations\"}},\"memberships\":{\"links\":{\"self\":\"http://example.org/v1/users/25/relationships/memberships\",\"related\":\"http://example.org/v1/users/25/memberships\"}}}}}",
       "response_headers": {
         "Content-Type": "application/vnd.api+json; charset=utf-8"
       },

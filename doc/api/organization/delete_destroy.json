@@ -1,7 +1,7 @@
 {
-  "resource": "User",
+  "resource": "Organization",
   "http_method": "DELETE",
-  "route": "/v1/users/:persisted_id",
+  "route": "/v1/organizations/:persisted_id",
   "description": "DELETE destroy",
   "explanation": null,
   "parameters": [
@@ -17,10 +17,10 @@
   "requests": [
     {
       "request_method": "DELETE",
-      "request_path": "/v1/users/17",
-      "request_body": "{\"data\":{\"id\":17}}",
+      "request_path": "/v1/organizations/40",
+      "request_body": "{\"data\":{\"id\":40}}",
       "request_headers": {
-        "Authorization": "Bearer 2e89e3ffe053797df19bc9ade84774380ee55708e29d95c548ab3c180198f142",
+        "Authorization": "Bearer ec89a6908cb75e2ade76553f1d2414a2b756031d1f65ade20880396f04c4d63a",
         "Content-Type": "application/x-www-form-urlencoded"
       },
       "request_query_parameters": {

@@ -14,7 +14,7 @@
     {
       "request_method": "POST",
       "request_path": "/oauth/token",
-      "request_body": "grant_type=password&username=example13%40test.com&password=J3lksdyy6%3B0%5E%23",
+      "request_body": "grant_type=password&username=example44%40test.com&password=J3lksdyy6%3B0%5E%23",
       "request_headers": {
         "Content-Type": "application/x-www-form-urlencoded"
       },
@@ -23,7 +23,7 @@
       "request_content_type": "application/x-www-form-urlencoded",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\"access_token\":\"5a837f79e472f1451ecface4b0e32bc6bf87eb3460d9fe2dbd274b6e3966bfa6\",\"token_type\":\"bearer\",\"expires_in\":7200,\"created_at\":1479184762}",
+      "response_body": "{\"access_token\":\"d1508d5502d045409f246e1574decb776361b935e3d6c07ba278cf0f9f7854dc\",\"token_type\":\"bearer\",\"expires_in\":7200,\"created_at\":1483825427}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },

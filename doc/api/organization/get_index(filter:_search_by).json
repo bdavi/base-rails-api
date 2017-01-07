@@ -1,0 +1,37 @@
+{
+  "resource": "Organization",
+  "http_method": "GET",
+  "route": "/v1/organizations/",
+  "description": "GET index(filter: search_by)",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/v1/organizations/?filter[search_by]=iS+tHe",
+      "request_body": null,
+      "request_headers": {
+        "Authorization": "Bearer 40b12a568082136cb818af81776bfc24adb11af22c08463c12f0d2a92afcf08d"
+      },
+      "request_query_parameters": {
+        "filter": {
+          "search_by": "iS tHe"
+        }
+      },
+      "request_content_type": null,
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":[{\"id\":\"41\",\"type\":\"organizations\",\"links\":{\"self\":\"http://example.org/v1/organizations/41\"},\"attributes\":{\"created-at\":\"2017-01-07T21:43:47.481Z\",\"updated-at\":\"2017-01-07T21:43:47.481Z\",\"name\":\"This is the name\",\"address\":null,\"phone\":null,\"url\":null,\"email\":null},\"relationships\":{\"memberships\":{\"links\":{\"self\":\"http://example.org/v1/organizations/41/relationships/memberships\",\"related\":\"http://example.org/v1/organizations/41/memberships\"}},\"users\":{\"links\":{\"self\":\"http://example.org/v1/organizations/41/relationships/users\",\"related\":\"http://example.org/v1/organizations/41/users\"}}}}],\"meta\":{\"record-count\":1},\"links\":{\"first\":\"http://example.org/v1/organizations?filter%5Bsearch_by%5D=iS+tHe\\u0026page%5Blimit%5D=10\\u0026page%5Boffset%5D=0\",\"last\":\"http://example.org/v1/organizations?filter%5Bsearch_by%5D=iS+tHe\\u0026page%5Blimit%5D=10\\u0026page%5Boffset%5D=0\"}}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json; charset=utf-8"
+      },
+      "response_content_type": "application/vnd.api+json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}

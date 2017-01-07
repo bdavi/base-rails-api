@@ -13,17 +13,17 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/v1/users/4",
+      "request_path": "/v1/users/19",
       "request_body": null,
       "request_headers": {
-        "Authorization": "Bearer f96c2ab0c8f02c9c8a44b1d4d9fe619272a1e25c83dd6835139075a4a4a66dd9"
+        "Authorization": "Bearer dab0a48cf3e4d2968c4826f0dd98a6210213c623d1056d99c9a876f1f8b0e9a5"
       },
       "request_query_parameters": {
       },
       "request_content_type": null,
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\"data\":{\"id\":\"4\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/4\"},\"attributes\":{\"created-at\":\"2016-11-15T04:39:22.371Z\",\"updated-at\":\"2016-11-15T04:39:22.371Z\",\"email\":\"example3@test.com\"}}}",
+      "response_body": "{\"data\":{\"id\":\"19\",\"type\":\"users\",\"links\":{\"self\":\"http://example.org/v1/users/19\"},\"attributes\":{\"created-at\":\"2017-01-07T21:43:46.931Z\",\"updated-at\":\"2017-01-07T21:43:46.931Z\",\"email\":\"example19@test.com\",\"name\":\"Teresa Cummerata DDS\"},\"relationships\":{\"organizations\":{\"links\":{\"self\":\"http://example.org/v1/users/19/relationships/organizations\",\"related\":\"http://example.org/v1/users/19/organizations\"}},\"memberships\":{\"links\":{\"self\":\"http://example.org/v1/users/19/relationships/memberships\",\"related\":\"http://example.org/v1/users/19/memberships\"}}}}}",
       "response_headers": {
         "Content-Type": "application/vnd.api+json; charset=utf-8"
       },

@@ -1,0 +1,64 @@
+{
+  "resource": "MembershipInvitation",
+  "http_method": "PATCH",
+  "route": "/v1/membership-invitations/:persisted_id",
+  "description": "PATCH update",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "type",
+      "description": " type"
+    },
+    {
+      "required": true,
+      "name": "id",
+      "description": " id"
+    },
+    {
+      "scope": "attributes",
+      "name": "email",
+      "description": "Attributes email"
+    },
+    {
+      "scope": "relationships",
+      "name": "user",
+      "description": "Relationships user"
+    },
+    {
+      "scope": "relationships",
+      "name": "membership",
+      "description": "Relationships membership"
+    },
+    {
+      "scope": "relationships",
+      "name": "organization",
+      "description": "Relationships organization"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "PATCH",
+      "request_path": "/v1/membership-invitations/2",
+      "request_body": "{\"data\":{\"type\":\"membership-invitations\",\"id\":2,\"attributes\":{\"email\":\"some-new-email@example.com\"},\"relationships\":{\"user\":{\"data\":{\"id\":32,\"type\":\"users\"}},\"organization\":{\"data\":{\"id\":22,\"type\":\"organizations\"}}}}}",
+      "request_headers": {
+        "Authorization": "Bearer cf3393301dcf31af529dbdc8af4f963d9adf072e9214f8b4347cd6c0d1c5da28",
+        "Content-Type": "application/vnd.api+json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":{\"id\":\"2\",\"type\":\"membership-invitations\",\"links\":{\"self\":\"http://example.org/v1/membership-invitations/2\"},\"attributes\":{\"created-at\":\"2017-01-07T21:43:47.211Z\",\"updated-at\":\"2017-01-07T21:43:47.235Z\",\"email\":\"some-new-email@example.com\"},\"relationships\":{\"user\":{\"links\":{\"self\":\"http://example.org/v1/membership-invitations/2/relationships/user\",\"related\":\"http://example.org/v1/membership-invitations/2/user\"}},\"membership\":{\"links\":{\"self\":\"http://example.org/v1/membership-invitations/2/relationships/membership\",\"related\":\"http://example.org/v1/membership-invitations/2/membership\"}},\"organization\":{\"links\":{\"self\":\"http://example.org/v1/membership-invitations/2/relationships/organization\",\"related\":\"http://example.org/v1/membership-invitations/2/organization\"}}}}}",
+      "response_headers": {
+        "Content-Type": "application/vnd.api+json; charset=utf-8"
+      },
+      "response_content_type": "application/vnd.api+json; charset=utf-8",
+      "curl": null
+    }
+  ]
+}
