@@ -24,6 +24,7 @@
 #
 
 class MembershipInvitation < ApplicationRecord
+  EXPIRATION_INTERVAL_DAYS = 30
 
   belongs_to :user
 
@@ -46,6 +47,12 @@ class MembershipInvitation < ApplicationRecord
 
     new_membership = Membership.create(user: _invited_user, organization: organization)
     self.update membership: new_membership
+  end
+
+  def status
+    return "accepted" if membership
+    return "expired" if created_at < (DateTime.now - EXPIRATION_INTERVAL_DAYS.days)
+    return "pending"
   end
 
   private

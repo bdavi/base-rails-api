@@ -41,4 +41,27 @@ RSpec.describe MembershipInvitation, type: :model do
     end
   end
 
+  describe "#status" do
+    context "when not accepted and after expiration date" do
+      it "returns 'expired'" do
+        subject.created_at = (described_class::EXPIRATION_INTERVAL_DAYS + 1).days.ago
+        expect(subject.status).to eq "expired"
+      end
+    end
+
+    context "when not accepted and before expiration date" do
+      it "returns 'pending'" do
+        subject.created_at = DateTime.now
+        expect(subject.status).to eq "pending"
+      end
+    end
+
+    context "when membership is present" do
+      it "returns 'accepted'" do
+        subject.membership = Membership.new
+        expect(subject.status).to eq "accepted"
+      end
+    end
+  end
+
 end
