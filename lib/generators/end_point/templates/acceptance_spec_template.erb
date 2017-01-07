@@ -13,8 +13,8 @@ RSpec.resource "<%= class_name %>" do
   create do<% non_belongs_to_attribute_names.each do |attribute| %>
     let("<%= attribute.dasherize %>") { "" }<% end %><% belongs_to_attribute_names.each do |attribute| %>
     let("<%= attribute.dasherize %>") do
-      data: {
-        {
+      {
+        data: {
           id: create(:<%= attribute.underscore %>).id,
           type: "<%= attribute.underscore.dasherize.pluralize %>"
         }
