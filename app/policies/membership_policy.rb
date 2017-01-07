@@ -12,8 +12,7 @@ class MembershipPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      organization_ids = scope_for(Organization).select(:id)
-      scope.where(organization_id: organization_ids)
+      scope.where(organization_id: scope_for(Organization).select(:id))
     end
   end
 end

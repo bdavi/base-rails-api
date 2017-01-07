@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
   namespace :v1 do
+    jsonapi_resources :membership_invitations
     jsonapi_resources :memberships
     jsonapi_resources :organizations
     jsonapi_resources :password_resets, only: :create

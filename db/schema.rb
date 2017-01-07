@@ -10,11 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222035118) do
+ActiveRecord::Schema.define(version: 20170107200628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "citext"
+
+  create_table "membership_invitations", force: :cascade do |t|
+    t.integer  "user_id",         null: false
+    t.string   "email",           null: false
+    t.integer  "membership_id"
+    t.integer  "organization_id", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["membership_id"], name: "index_membership_invitations_on_membership_id", using: :btree
+    t.index ["organization_id"], name: "index_membership_invitations_on_organization_id", using: :btree
+    t.index ["user_id"], name: "index_membership_invitations_on_user_id", using: :btree
+  end
 
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id",         null: false
@@ -89,6 +101,9 @@ ActiveRecord::Schema.define(version: 20161222035118) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "membership_invitations", "memberships"
+  add_foreign_key "membership_invitations", "organizations"
+  add_foreign_key "membership_invitations", "users"
   add_foreign_key "memberships", "organizations"
   add_foreign_key "memberships", "users"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
