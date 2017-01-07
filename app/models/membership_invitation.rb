@@ -4,7 +4,7 @@
 #
 #  id              :integer          not null, primary key
 #  user_id         :integer          not null
-#  email           :string           not null
+#  email           :citext           not null
 #  membership_id   :integer
 #  organization_id :integer          not null
 #  created_at      :datetime         not null

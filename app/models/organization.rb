@@ -7,7 +7,7 @@
 #  address    :text
 #  phone      :text
 #  url        :string
-#  email      :string
+#  email      :citext
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

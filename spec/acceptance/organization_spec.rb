@@ -15,13 +15,13 @@ RSpec.resource "Organization" do
   destroy
   create do
     let("name") { Faker::Company.name }
-    let("address") { Faker::Address.street_address  }
-    let("phone") { Faker::PhoneNumber.cell_phone }
+    let("address") { "123 Main street, Denver CO 80545"  }
+    let("phone") { "9703883888" }
     let("url") { Faker::Internet.url }
     let("email") { Faker::Internet.email }
   end
   update do
-    let("address") { Faker::Address.street_address  }
+    let("address") { "123 Main street, Denver CO 80545" }
   end
   filtered_index :search_by, "iS tHe"  do
     let!(:matching_record) { create(:organization, name: "This is the name") }

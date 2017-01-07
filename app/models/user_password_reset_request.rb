@@ -3,7 +3,7 @@
 # Table name: user_password_reset_requests
 #
 #  id         :integer          not null, primary key
-#  email      :string           not null
+#  email      :citext           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
