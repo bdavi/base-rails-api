@@ -1,15 +1,48 @@
 require 'rails_helper'
 
 RSpec.describe <%= class_name %>Policy, type: :policy do
-  it { is_expected.to forbid_action(:create) }
-  it { is_expected.to forbid_action(:update) }
-  it { is_expected.to forbid_action(:destroy) }
+
+  context "when user is application admin" do
+    before { user.kind = "application_admin" }
+
+    it { is_expected.to permit_action(:create) }
+    it { is_expected.to permit_action(:update) }
+    it { is_expected.to permit_action(:destroy) }
+  end
+
+  context "when user is member of the related organization" do
+    before { <make_user_a_member_or_org> }
+
+    it { is_expected.to permit_action(:create) }
+    it { is_expected.to permit_action(:update) }
+    it { is_expected.to permit_action(:destroy) }
+  end
+
+  context "when user is unrelated" do
+    it { is_expected.to forbid_action(:create) }
+    it { is_expected.to forbid_action(:update) }
+    it { is_expected.to forbid_action(:destroy) }
+  end
 
   describe "#scope" do
     persist_record_and_user
 
-    it "does not include the record" do
-      expect(resolved_scope).to eq be_empty
+    let!(:member_of) { <make_record_user_is_member_of> }
+    let!(:unrelated) { create(:<%= file_name %>) }
+
+    context "when non-admin" do
+      it "includes the records for organizations the user is a member of" do
+        expect(resolved_scope).to eq [member_of]
+      end
+    end
+
+    context "when user is applciation administrator" do
+      before { user.update kind:  "application_admin" }
+
+      it "includes all records" do
+        expect(resolved_scope.to_set).to eq <%= class_name %>.all.to_set
+      end
     end
   end
+
 end

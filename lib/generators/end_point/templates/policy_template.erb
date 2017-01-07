@@ -1,6 +1,7 @@
 class <%= class_name %>Policy < ApplicationPolicy
   def create?
-    false
+    user.application_admin? ||
+      <non_admin_criteria_here>
   end
 
   def update?
@@ -13,7 +14,11 @@ class <%= class_name %>Policy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.none
+      if user.application_admin?
+        return scope.all
+      end
+
+      scope.where(organization_id: scope_for(Organization).select(:id))
     end
   end
 end
