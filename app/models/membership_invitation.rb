@@ -39,4 +39,19 @@ class MembershipInvitation < ApplicationRecord
 
   validates :user, presence: true
 
+  after_create :accept, if: :_invited_user
+
+  def accept
+    return unless _invited_user && organization && !membership
+
+    new_membership = Membership.create(user: _invited_user, organization: organization)
+    self.update membership: new_membership
+  end
+
+  private
+
+  def _invited_user
+    User.find_by(email: email)
+  end
+
 end
