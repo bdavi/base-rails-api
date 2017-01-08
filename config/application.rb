@@ -42,5 +42,10 @@ module ApiBase
 
     # Application level custom configuration
     config.application_display_name = "BaseApp"
+
+    config.action_mailer.delivery_method = :smtp
+
+    config.action_mailer.perform_deliveries = true
+
   end
 end
