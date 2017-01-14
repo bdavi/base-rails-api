@@ -18,7 +18,6 @@ RSpec.describe MembershipInvitation, type: :model do
 
   include_examples "validate_format_as_email_of", :email
 
-
   describe "#accept" do
     it "creates a membership and sets that value on the invitation" do
       user = create(:user)

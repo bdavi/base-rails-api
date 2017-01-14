@@ -12,11 +12,11 @@ module V1
 
     class << self
       def creatable_fields context
-        super + %i[user email membership organization status]
+        super + %i[user email membership organization]
       end
 
       def updatable_fields context
-        super + %i[user email membership organization status]
+        super + %i[user email membership organization]
       end
     end
 
