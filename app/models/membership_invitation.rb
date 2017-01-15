@@ -24,6 +24,8 @@
 #
 
 class MembershipInvitation < ApplicationRecord
+  include TextSearchable
+
   EXPIRATION_INTERVAL_DAYS = 30
 
   belongs_to :user
@@ -45,6 +47,8 @@ class MembershipInvitation < ApplicationRecord
   after_create :_email_existing_user, if: :invited_user
 
   after_create :_email_invitation_to_new_user, unless: :invited_user
+
+  search_by_columns columns: %i[email user.name], join: :user
 
   def accept
     return unless invited_user && organization && !membership

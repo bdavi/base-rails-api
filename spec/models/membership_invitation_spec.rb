@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe MembershipInvitation, type: :model do
+  include_examples "TextSearchable", %i[email user.name]
 
   it { is_expected.to have_attribute :email }
 
