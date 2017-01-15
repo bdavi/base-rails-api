@@ -4,11 +4,15 @@ module V1
 
     attribute :status
 
+    has_one :invited_user, class_name: "User"
+
     has_one :user
 
     has_one :membership
 
     has_one :organization
+
+    filter :organization
 
     class << self
       def creatable_fields context
@@ -21,7 +25,7 @@ module V1
     end
 
     def fetchable_fields
-      super + %i[user email membership organization status]
+      super + %i[user email membership organization status invited_user]
     end
   end
 end

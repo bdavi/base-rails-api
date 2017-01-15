@@ -34,4 +34,9 @@ RSpec.resource "MembershipInvitation" do
   update do
     let("email") { "some-new-email@example.com" }
   end
+  filtered_index :organization, 9999 do
+    let!(:included_organization) { create(:organization, id: 9999) }
+    let!(:matching_record) { create(:membership_invitation, organization: included_organization) }
+    let!(:not_matching_record) { create(:membership_invitation) }
+  end
 end

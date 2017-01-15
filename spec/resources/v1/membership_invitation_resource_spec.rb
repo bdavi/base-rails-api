@@ -6,7 +6,9 @@ RSpec.describe V1::MembershipInvitationResource, type: :resource do
   end
   let(:updatable_fields) { creatable_fields }
   let(:sortable_fields)  { base_fetchable_fields }
-  let(:fetchable_fields) { base_fetchable_fields + creatable_fields + %i[status] }
+  let :fetchable_fields do
+    base_fetchable_fields + creatable_fields + %i[status invited_user]
+  end
 
   it { is_expected.to have_creatable_fields *creatable_fields }
 

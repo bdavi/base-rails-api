@@ -31,12 +31,35 @@ RSpec.describe MembershipInvitation, type: :model do
     end
   end
 
-  context "when email matches existing user" do
-    it "accepts the invitation after create" do
-      user = create(:user)
-      subject = build(:membership_invitation, email: user.email)
-      expect(subject).to receive(:accept)
-      subject.save
+  context "after_create" do
+    context "when email matches existing user" do
+      let(:invited_user) { create(:user) }
+      subject { build(:membership_invitation, email: invited_user.email) }
+
+      it "accepts the invitation after create" do
+        expect(subject).to receive(:accept)
+        subject.save
+      end
+
+      it "sends an email to the invited user" do
+        expect(MembershipInvitationMailer).to receive(:added_to_new_organization_email)
+          .with(subject).and_call_original
+
+        expect {
+          subject.save
+        }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      end
+    end
+
+    context "when no matching invited user" do
+      it "sends an email to the specified email" do
+        expect(MembershipInvitationMailer).to receive(:invite_user_email)
+          .with(subject).and_call_original
+
+        expect {
+          subject.save
+        }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      end
     end
   end
 

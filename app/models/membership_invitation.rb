@@ -40,12 +40,16 @@ class MembershipInvitation < ApplicationRecord
 
   validates :user, presence: true
 
-  after_create :accept, if: :_invited_user
+  after_create :accept, if: :invited_user
+
+  after_create :_email_existing_user, if: :invited_user
+
+  after_create :_email_invitation_to_new_user, unless: :invited_user
 
   def accept
-    return unless _invited_user && organization && !membership
+    return unless invited_user && organization && !membership
 
-    new_membership = Membership.create(user: _invited_user, organization: organization)
+    new_membership = Membership.create(user: invited_user, organization: organization)
     self.update membership: new_membership
   end
 
@@ -55,10 +59,21 @@ class MembershipInvitation < ApplicationRecord
     return "pending"
   end
 
-  private
-
-  def _invited_user
+  def invited_user
     User.find_by(email: email)
   end
 
+  private
+
+  def _email_existing_user
+    return unless invited_user && organization
+
+    MembershipInvitationMailer.added_to_new_organization_email(self).deliver_now
+  end
+
+  def _email_invitation_to_new_user
+    return if invited_user || membership
+
+    MembershipInvitationMailer.invite_user_email(self).deliver_now
+  end
 end
