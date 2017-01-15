@@ -14,6 +14,10 @@ module V1
 
     filter :organization
 
+    filter :search_by, apply: -> (records, value, _options) {
+      records.search_by(value)
+    }
+
     class << self
       def creatable_fields context
         super + %i[user email membership organization]
