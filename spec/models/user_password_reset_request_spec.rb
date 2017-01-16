@@ -35,9 +35,13 @@ RSpec.describe UserPasswordResetRequest, type: :model do
 
   describe "sending email" do
     it "sends a reset email on create" do
+      user = User.find_by(email: subject.email)
+      expect(UserMailer).to receive(:password_reset_email)
+        .with(user).and_call_original
+
       expect {
         subject.save
-      }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      }.to enqueue_job(ActionMailer::DeliveryJob)
     end
 
     it "does not send a reset email on update" do

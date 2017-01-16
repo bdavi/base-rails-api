@@ -29,6 +29,6 @@ class UserPasswordResetRequest < ApplicationRecord
   end
 
   def _send_email
-    UserMailer.password_reset_email(_user).deliver_now
+    UserMailer.password_reset_email(_user).deliver_later
   end
 end

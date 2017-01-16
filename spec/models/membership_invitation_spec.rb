@@ -19,15 +19,20 @@ RSpec.describe MembershipInvitation, type: :model do
 
   include_examples "validate_format_as_email_of", :email
 
+  it "validates the invited user does not already have a membership" do
+    invited_user = create(:user, email: subject.email)
+    invited_user.memberships.create(organization: subject.organization)
+    subject.valid?
+
+    expect(subject.errors[:email]).to include "A user with this email already has a membership with the organization."
+  end
+
   describe "#accept" do
     it "creates a membership and sets that value on the invitation" do
-      user = create(:user)
-      subject = build(:membership_invitation, email: user.email)
-
       expect(subject.membership).to be_nil
+      user = create(:user, email: subject.email)
       expect { subject.accept }.to change { Membership.count }.by(1)
       expect(user.organizations).to include subject.organization
-      subject.reload
       expect(subject.membership).to eq user.memberships.first
     end
   end
@@ -48,7 +53,7 @@ RSpec.describe MembershipInvitation, type: :model do
 
         expect {
           subject.save
-        }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        }.to enqueue_job(ActionMailer::DeliveryJob)
       end
     end
 
@@ -59,7 +64,7 @@ RSpec.describe MembershipInvitation, type: :model do
 
         expect {
           subject.save
-        }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        }.to enqueue_job(ActionMailer::DeliveryJob)
       end
     end
   end
@@ -87,4 +92,21 @@ RSpec.describe MembershipInvitation, type: :model do
     end
   end
 
+  it "has a pending scope" do
+    pending_invitation = create(:membership_invitation, :pending)
+    expired_invitation = create(:membership_invitation, :expired)
+    accepted_invitation = create(:membership_invitation, :accepted)
+
+    expect(described_class.pending).to eq [pending_invitation]
+  end
+
+  it "validates there is no existing pending invitation to the organization" do
+    existing_invitation = create(:membership_invitation, :pending)
+    subject.email = existing_invitation.email
+    subject.organization = existing_invitation.organization
+
+    subject.valid?
+
+    expect(subject.errors[:email]).to include "already has a pending invitation to this organization"
+  end
 end

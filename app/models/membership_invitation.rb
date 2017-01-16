@@ -42,6 +42,12 @@ class MembershipInvitation < ApplicationRecord
 
   validates :user, presence: true
 
+  validate :_validate_invited_user_does_not_have_existing_membership,
+    if: :invited_user, on: :create
+
+  validate :_validate_email_does_not_have_a_pending_invitation_to_this_organization,
+    on: :create
+
   after_create :accept, if: :invited_user
 
   after_create :_email_existing_user, if: :invited_user
@@ -49,6 +55,11 @@ class MembershipInvitation < ApplicationRecord
   after_create :_email_invitation_to_new_user, unless: :invited_user
 
   search_by_columns columns: %i[email user.name], join: :user
+
+  scope :pending, ->() {
+    where(membership: nil)
+      .where("created_at > ?", EXPIRATION_INTERVAL_DAYS.days.ago)
+  }
 
   def accept
     return unless invited_user && organization && !membership
@@ -59,7 +70,7 @@ class MembershipInvitation < ApplicationRecord
 
   def status
     return "accepted" if membership
-    return "expired" if created_at < (DateTime.now - EXPIRATION_INTERVAL_DAYS.days)
+    return "expired" if created_at < EXPIRATION_INTERVAL_DAYS.days.ago
     return "pending"
   end
 
@@ -72,12 +83,28 @@ class MembershipInvitation < ApplicationRecord
   def _email_existing_user
     return unless invited_user && organization
 
-    MembershipInvitationMailer.added_to_new_organization_email(self).deliver_now
+    MembershipInvitationMailer.added_to_new_organization_email(self).deliver_later
   end
 
   def _email_invitation_to_new_user
     return if invited_user || membership
 
-    MembershipInvitationMailer.invite_user_email(self).deliver_now
+    MembershipInvitationMailer.invite_user_email(self).deliver_later
+  end
+
+  def _validate_invited_user_does_not_have_existing_membership
+    return unless invited_user && organization
+
+    if invited_user.organizations.include?(organization)
+      errors.add :email, "A user with this email already has a membership with the organization."
+    end
+  end
+
+  def _validate_email_does_not_have_a_pending_invitation_to_this_organization
+    return unless email && organization
+
+    if MembershipInvitation.pending.exists?(email: email, organization: organization)
+      errors.add :email, "already has a pending invitation to this organization"
+    end
   end
 end
