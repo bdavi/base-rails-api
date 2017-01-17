@@ -7,7 +7,9 @@ RSpec.describe MembershipInvitationMailer, type: :mailer do
   end
 
   let(:organization) { build(:organization, name: "Acme Inc.", id: 99) }
-  let(:invitation) { build(:membership_invitation, organization: organization) }
+  let(:invitation) do
+    build(:membership_invitation, organization: organization, email: "test@test.com")
+  end
 
   describe "#invite_user_email" do
     let(:mailer) { described_class.invite_user_email(invitation).deliver_now }
@@ -27,12 +29,13 @@ RSpec.describe MembershipInvitationMailer, type: :mailer do
     it "has the expected body" do
       expected_pieces = [
         "You have been invited to join Acme Inc. on Some App Name",
-        'www.somedomain.com\/register\?organizationId=99',
+        '<a href="http://www.somedomain.com/redeem-invitation?organizationId=99' +
+          '&amp;organziationName=Acme%20Inc.&amp;email=test@test.com">Click here</a>',
         "The Some App Name Team"
       ]
 
       expected_pieces.each do |piece|
-        expect(mailer.body.encoded).to match(piece)
+        expect(mailer.body.encoded).to include(piece)
       end
     end
   end

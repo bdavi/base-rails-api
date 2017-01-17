@@ -42,4 +42,19 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "on create" do
+    it "accepts pending invitations" do
+      invitation = create(:membership_invitation)
+      subject.email = invitation.email
+
+      expect(invitation.status).to eq "pending"
+      expect(subject.organizations).to be_empty
+
+      subject.save
+      invitation.reload
+
+      expect(invitation.status).to eq "accepted"
+      expect(subject.organizations).to include invitation.organization
+    end
+  end
 end

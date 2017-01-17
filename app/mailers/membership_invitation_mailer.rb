@@ -1,7 +1,11 @@
+require 'open-uri'
+
 class MembershipInvitationMailer < ApplicationMailer
   def invite_user_email(membership_invitation)
     organization = membership_invitation.organization
-    @signup_url = "#{ENV["WEB_UI_URL"]}/register?organizationId=#{organization.id}"
+    @signup_url = "#{ENV["WEB_UI_URL"]}/redeem-invitation?organizationId=" +
+      "#{organization.id}&organziationName=#{URI::encode(organization.name)}" +
+      "&email=#{URI::encode(membership_invitation.email)}"
     @organization_name = organization.name
     subject = "You've been invited to join #{organization.name} on #{@app_name}"
 

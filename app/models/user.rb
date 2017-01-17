@@ -31,8 +31,20 @@ class User < ApplicationRecord
 
   enum kind: [:application_admin, :standard]
 
+  after_create :_accept_pending_invitations, on: :commit
+
   def access_token
     expires_in = Doorkeeper.configuration.authorization_code_expires_in
     Doorkeeper::AccessToken.find_or_create_for(nil, id, nil, expires_in, false)
+  end
+
+  private
+
+  def _accept_pending_invitations
+    _pending_invitations.each {|invitation| invitation.accept }
+  end
+
+  def _pending_invitations
+    MembershipInvitation.pending.where(email: email)
   end
 end
