@@ -42,7 +42,7 @@ RSpec.shared_examples "TextSearchable" do |columns|
         ending_match = create_match(column, "2k.sdf S-o!m22'e")
         middle_match = create_match(column, "text S-o!m22'e goes here")
         partial_word_match = create_match(column, "text bbS-o!m22'e. goes here")
-        case_insensitive_match = create_match(column, "s-o!M22'e")
+        case_insensitive_match = create_match(column, "Ss-o!M22'e")
         does_not_match = create_match(column, "No match in this string.")
 
         matches = Set[

@@ -20,9 +20,14 @@
 #
 
 class Membership < ApplicationRecord
+  include TextSearchable
+
+  search_by_columns columns: %i[user.email user.name], join: :user
 
   belongs_to :user, required: true
 
   belongs_to :organization, required: true
+
+  has_many :membership_invitations, dependent: :nullify
 
 end

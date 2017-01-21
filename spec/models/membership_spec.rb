@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Membership, type: :model do
+  include_examples "TextSearchable", %i[user.name user.email]
 
   it { is_expected.to belong_to :user }
 
@@ -9,5 +10,7 @@ RSpec.describe Membership, type: :model do
   it { is_expected.to validate_presence_of(:user).with_message("must exist") }
 
   it { is_expected.to validate_presence_of(:organization).with_message("must exist") }
+
+  it { is_expected.to have_many(:membership_invitations).dependent(:nullify) }
 
 end

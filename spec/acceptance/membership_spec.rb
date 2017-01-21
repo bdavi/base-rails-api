@@ -28,4 +28,8 @@ RSpec.resource "Membership" do
       }
     end
   end
+  filtered_index :search_by, "hello"  do
+    let!(:matching_record) { create(:membership).tap {|m| m.user.update name: "hello" } }
+    let!(:not_matching_record) { create(:membership) }
+  end
 end
