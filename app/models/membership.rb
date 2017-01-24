@@ -28,6 +28,4 @@ class Membership < ApplicationRecord
 
   belongs_to :organization, required: true
 
-  has_many :membership_invitations, dependent: :nullify
-
 end

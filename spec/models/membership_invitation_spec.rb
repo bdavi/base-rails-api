@@ -5,9 +5,9 @@ RSpec.describe MembershipInvitation, type: :model do
 
   it { is_expected.to have_attribute :email }
 
-  it { is_expected.to belong_to :user }
+  it { is_expected.to have_attribute :status }
 
-  it { is_expected.to belong_to :membership }
+  it { is_expected.to belong_to :user }
 
   it { is_expected.to belong_to :organization }
 
@@ -19,6 +19,20 @@ RSpec.describe MembershipInvitation, type: :model do
 
   include_examples "validate_format_as_email_of", :email
 
+  it "has the expected statuses" do
+    expected = {
+      "pending" => 0,
+      "accepted" => 1,
+      "expired" => 2
+    }
+
+    expect(described_class.statuses).to eq expected
+  end
+
+  it "defaults status to 'pending'" do
+    expect(described_class.new.status).to eq "pending"
+  end
+
   it "validates the invited user does not already have a membership" do
     invited_user = create(:user, email: subject.email)
     invited_user.memberships.create(organization: subject.organization)
@@ -28,12 +42,13 @@ RSpec.describe MembershipInvitation, type: :model do
   end
 
   describe "#accept" do
-    it "creates a membership and sets that value on the invitation" do
-      expect(subject.membership).to be_nil
+    it "creates a membership and updates the status to accepted" do
+      subject = create(:membership_invitation)
+      expect(subject.status).to eq "pending"
       user = create(:user, email: subject.email)
       expect { subject.accept }.to change { Membership.count }.by(1)
       expect(user.organizations).to include subject.organization
-      expect(subject.membership).to eq user.memberships.first
+      expect(subject.status).to eq "accepted"
     end
   end
 
@@ -66,38 +81,16 @@ RSpec.describe MembershipInvitation, type: :model do
           subject.save
         }.to enqueue_job(ActionMailer::DeliveryJob)
       end
-    end
-  end
 
-  describe "#status" do
-    context "when not accepted and after expiration date" do
-      it "returns 'expired'" do
-        subject.created_at = (described_class::EXPIRATION_INTERVAL_DAYS + 1).days.ago
-        expect(subject.status).to eq "expired"
+      it "enqueues an MembershipInvitationExpirationJob" do
+        scheduled_expiration = 99.days.from_now
+        allow_any_instance_of(ActiveSupport::Duration).to receive(:from_now).and_return(scheduled_expiration)
+
+        expect {
+          subject.save
+        }.to enqueue_job(MembershipInvitationExpirationJob).at(scheduled_expiration)
       end
     end
-
-    context "when not accepted and before expiration date" do
-      it "returns 'pending'" do
-        subject.created_at = DateTime.now
-        expect(subject.status).to eq "pending"
-      end
-    end
-
-    context "when membership is present" do
-      it "returns 'accepted'" do
-        subject.membership = Membership.new
-        expect(subject.status).to eq "accepted"
-      end
-    end
-  end
-
-  it "has a pending scope" do
-    pending_invitation = create(:membership_invitation, :pending)
-    expired_invitation = create(:membership_invitation, :expired)
-    accepted_invitation = create(:membership_invitation, :accepted)
-
-    expect(described_class.pending).to eq [pending_invitation]
   end
 
   it "validates there is no existing pending invitation to the organization" do

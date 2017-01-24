@@ -5,14 +5,13 @@
 #  id              :integer          not null, primary key
 #  user_id         :integer          not null
 #  email           :citext           not null
-#  membership_id   :integer
 #  organization_id :integer          not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  status          :integer          default(0), not null
 #
 # Indexes
 #
-#  index_membership_invitations_on_membership_id    (membership_id)
 #  index_membership_invitations_on_organization_id  (organization_id)
 #  index_membership_invitations_on_user_id          (user_id)
 #
@@ -20,19 +19,16 @@
 #
 #  fk_rails_2d5610504b  (organization_id => organizations.id)
 #  fk_rails_b0fb0efd47  (user_id => users.id)
-#  fk_rails_d1d8e48c20  (membership_id => memberships.id)
 #
 
 class MembershipInvitation < ApplicationRecord
-  include TextSearchable
-
   EXPIRATION_INTERVAL_DAYS = 30
 
   belongs_to :user
 
-  belongs_to :membership
-
   belongs_to :organization
+
+  enum status: %i[pending accepted expired]
 
   validates :email,
     presence: true,
@@ -42,36 +38,33 @@ class MembershipInvitation < ApplicationRecord
 
   validates :user, presence: true
 
-  validate :_validate_invited_user_does_not_have_existing_membership,
-    if: :invited_user, on: :create
-
   validate :_validate_email_does_not_have_a_pending_invitation_to_this_organization,
     on: :create
 
-  after_create :accept, if: :invited_user
+  with_options if: :invited_user do
+    validate :_validate_invited_user_does_not_have_existing_membership, on: :create
 
-  after_create :_email_existing_user, if: :invited_user
+    after_create :accept
 
-  after_create :_email_invitation_to_new_user, unless: :invited_user
-
-  search_by_columns columns: %i[email user.name], join: :user
-
-  scope :pending, ->() {
-    where(membership: nil)
-      .where("created_at > ?", EXPIRATION_INTERVAL_DAYS.days.ago)
-  }
-
-  def accept
-    return unless invited_user && organization && !membership
-
-    new_membership = Membership.create(user: invited_user, organization: organization)
-    self.update membership: new_membership
+    after_create :_email_existing_user
   end
 
-  def status
-    return "accepted" if membership
-    return "expired" if created_at < EXPIRATION_INTERVAL_DAYS.days.ago
-    return "pending"
+  with_options unless: :invited_user do
+    after_create :_email_invitation_to_new_user
+
+    after_create :_schedule_expiration
+  end
+
+  include TextSearchable
+  search_by_columns columns: %i[email user.name], join: :user
+
+  def accept
+    return unless invited_user && organization && pending?
+
+    ActiveRecord::Base.transaction do
+      update! status: "accepted"
+      Membership.create!(user: invited_user, organization: organization)
+    end
   end
 
   def invited_user
@@ -86,8 +79,14 @@ class MembershipInvitation < ApplicationRecord
     MembershipInvitationMailer.added_to_new_organization_email(self).deliver_later
   end
 
+  def _schedule_expiration
+    MembershipInvitationExpirationJob
+      .set(wait_until: EXPIRATION_INTERVAL_DAYS.days.from_now)
+      .perform_later(self)
+  end
+
   def _email_invitation_to_new_user
-    return if invited_user || membership
+    return if invited_user || !pending?
 
     MembershipInvitationMailer.invite_user_email(self).deliver_later
   end

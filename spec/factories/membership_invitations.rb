@@ -5,13 +5,15 @@ FactoryGirl.define do
     sequence(:email) {|n| "some#{n}@email.com" }
   end
 
-  trait :pending
+  trait :pending do
+    status "pending"
+  end
 
   trait :accepted do
-    association :membership
+    status "accepted"
   end
 
   trait :expired do
-    created_at { (MembershipInvitation::EXPIRATION_INTERVAL_DAYS + 1).day.ago }
+    status "expired"
   end
 end

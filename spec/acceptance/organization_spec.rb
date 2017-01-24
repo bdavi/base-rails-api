@@ -3,7 +3,7 @@ require 'rspec_api_documentation/dsl'
 
 RSpec.resource "Organization" do
   shared_context "params" do
-    parameter "name", scope: :attributes
+    parameter "name", scope: :attributes, required: true
     parameter "address", scope: :attributes
     parameter "phone", scope: :attributes
     parameter "url", scope: :attributes
