@@ -35,6 +35,13 @@ RSpec.resource "MembershipInvitation" do
     let("email") { "some-new-email@example.com" }
   end
 
+  context "text search" do
+    filtered_index :search_by, "Ail@Te"  do
+      let!(:matching_record) { create(:membership_invitation, email: "sample_email@test.com") }
+      let!(:not_matching_record) { create(:membership_invitation) }
+    end
+  end
+
   context "filter by organization" do
     filtered_index :organization, 9999 do
       let!(:included_organization) { create(:organization, id: 9999) }
@@ -43,10 +50,10 @@ RSpec.resource "MembershipInvitation" do
     end
   end
 
-  context "text search" do
-    filtered_index :search_by, "Ail@Te"  do
-      let!(:matching_record) { create(:membership_invitation, email: "sample_email@test.com") }
-      let!(:not_matching_record) { create(:membership_invitation) }
+  context "filter by status" do
+    filtered_index :status, "accepted"  do
+      let!(:matching_record) { create(:membership_invitation, :accepted) }
+      let!(:not_matching_record) { create(:membership_invitation, :expired) }
     end
   end
 end

@@ -18,6 +18,11 @@ module V1
       records.search_by(value)
     }
 
+    filter :status, apply: -> (records, values, _options) {
+      # Uses enum scopes
+      values.map {|status| records.send(status) }.reduce(&:or)
+    }
+
     class << self
       def creatable_fields context
         super + %i[user email membership organization]
