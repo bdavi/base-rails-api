@@ -8,8 +8,6 @@ module V1
 
     has_one :user
 
-    has_one :membership
-
     has_one :organization
 
     filter :organization
@@ -25,16 +23,16 @@ module V1
 
     class << self
       def creatable_fields context
-        super + %i[user email membership organization]
+        super + %i[user email organization]
       end
 
       def updatable_fields context
-        super + %i[user email membership organization]
+        super + %i[user email organization]
       end
     end
 
     def fetchable_fields
-      super + %i[user email membership organization status invited_user]
+      super + %i[user email organization status invited_user]
     end
   end
 end

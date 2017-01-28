@@ -5,7 +5,6 @@ RSpec.resource "MembershipInvitation" do
   shared_context "params" do
     parameter "email", scope: :attributes
     parameter "user", scope: :relationships
-    parameter "membership", scope: :relationships
     parameter "organization", scope: :relationships
   end
 

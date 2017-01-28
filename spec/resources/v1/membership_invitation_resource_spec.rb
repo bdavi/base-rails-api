@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe V1::MembershipInvitationResource, type: :resource do
   let :creatable_fields do
-    %i[user email membership organization]
+    %i[user email organization]
   end
   let(:updatable_fields) { creatable_fields }
   let(:sortable_fields)  { base_fetchable_fields }
